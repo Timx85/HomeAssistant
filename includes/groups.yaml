@@ -1,0 +1,236 @@
+#################################################################
+## Views
+#################################################################
+default_view:
+ view: yes
+ name: Woning
+ icon: mdi:home-assistant
+ control: hidden
+ entities:
+  - group.testgroup2
+  - group.forecast_info
+  - group.afvalinzameling
+  - group.button_info
+
+Lights:
+  view: yes
+  name: Lights
+  entities:
+  - group.alllights  
+  
+woonkamer_view:
+ view: yes
+ name: Woonkamer
+ icon: mdi:home
+ entities:
+  - group.woonkamer
+  - group.Keuken
+  - group.afvalinzameling
+  - group.Devicetracker
+  - group.OverigeApparaten
+  - group.Weerfront
+  - camera.woonkamer1
+  - sensor.foscammotionsensor
+  - script.living_room_snapshot
+
+slaapkamer_view:
+ view: yes
+ name: Slaapkamer
+ icon: mdi:hotel
+ entities:
+  - group.slaapkamer
+  - group.alarm_clock
+  - script.updatelights
+  - script.updatelightsdownstairs
+  
+Buiten_view:
+ view: yes
+ name: Buiten
+ icon: mdi:pine-tree
+ entities:
+  - group.buiten
+  - group.CatFlap
+
+GoogleMaps:
+ view: yes
+ name: GoogleMaps
+ icon: mdi:google-maps
+ entities:
+  - group.Weer
+
+Control View:
+  view: yes
+  name: C
+  icon: mdi:security-home #camcorder-box
+  entities:
+   - group.alarm_clock
+#   - group.Automations
+#   - group.zwave  
+
+TestGroup:
+ view: yes
+ name: TestGroup
+ icon: mdi:test-tube
+ entities:
+  - group.testgroup2 
+#################################################################
+## Groups
+#################################################################
+woonkamer:
+ name: Woonkamer
+ control: hidden
+ entities:
+  - switch.switch
+  - switch.switch_2
+  - input_text.remote_control
+
+Keuken:
+ name: Keuken
+ control: hidden
+ entities:
+  - light.level
+
+  
+buiten:
+  name: ' '
+  entities:
+      - input_text.br_tiles
+      - input_text.br_forecast_tiles
+
+Family:
+  name: Device Tracker
+  entities:
+  - device_tracker.ce0417142b50872202
+  - device_tracker.ce11171b6d4c1f1b04
+  #- device_tracker.3cbbfdf1ee2b #Galaxy Tablet
+
+Devicetracker:
+ name: Device Tracker
+ entities:
+  - input_text.dummy_tiles_device_tracker
+
+OverigeApparaten:
+  name: Overige Apparaten
+  entities:
+    - device_tracker.34363b659496 #Danielle Werk Laptop
+    - device_tracker.00aefadde869 #Danielle Werk Telefoon
+    - device_tracker.3cbbfdf1ee2b #Galaxy Tablet
+    - device_tracker.709e29dc2ff2 #PS4
+    - device_tracker.c4d9875b8e11 # Timo Werklaptop
+    - device_tracker.303a648f805e # Timo PC
+    - media_player.smarttv
+    - media_player.keuken
+    - media_player.woonkamer11
+
+proximity:
+ name: Distance from Home
+ entities:
+  - proximity.home
+  - sensor.daan_to_home
+  - sensor.time_home_to_work
+  - input_boolean.timohome
+  - input_boolean.daniellehome
+  
+zwave:
+ name: zWave devices
+ entities:
+  - zwave.aeotec_zw090_zstick_gen5_eu 
+  - zwave.stekker1
+  - zwave.stekker2
+  - zwave.stekker3
+  - zwave.fibarodimmer1
+  # - zwave.fibarodimmer2
+  # - zwave.slaapkamer_dimmer
+
+automationdisable:
+ name: Automation Disable
+ control: hidden
+ entities:
+  - input_boolean.disablekerst
+  - input_boolean.notify_trash
+
+Weer:
+  name: Weer
+  entities:
+    - camera.Timo
+    - sensor.yr_symbol
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_minutely_summary
+    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_daily_summary
+    - sensor.dark_sky_uv_index
+
+Weerfront:
+  name: Weer
+  entities:
+  - input_text.dummy_tiles_information
+
+# trashsensors:
+#   name: ' '
+#   control: hidden
+#   icon: mdi:delete
+#   entities:
+#     - sensor.trash_today
+#     - sensor.trash_tomorrow
+#     - sensor.trash_dayaftertomorrow
+
+alllights:
+  name: 'All Lights'
+  view: no
+  entities:
+    - input_text.dummy_customlighttiles
+  
+alarm_clock:
+  name: 'Alarm Clock'
+  entities:
+  - sensor.alarm_clock_time
+  - input_number.alarm_clock_hour
+  - input_number.alarm_clock_minute
+  - input_boolean.alarm_clock_status
+
+testgroup2:
+  name: ' '
+  # control: hidden
+  entities: 
+  - input_text.dummy_tilesmain
+  - input_text.br_tiles
+  - input_text.dummy_toggle_br_forecast
+
+button_info:
+  name: ' '
+  control: hidden
+  entities: 
+  - input_text.dummy_toggle_info_buttons
+
+forecast_info:
+  name: ' '
+  control: hidden
+  entities: 
+  - input_text.br_forecast_tiles
+
+afvalinzameling:
+  name: ' '
+  control: hidden
+  entities:
+  - input_text.dummy_tiles_afval
+  - input_text.dummy_toggle_lights
+
+CatFlap:
+        name: Sure Cat Flap Status
+        entities:
+            - binary_sensor.hub_status
+            - binary_sensor.flap_status
+            - sensor.loki_status
+            - binary_sensor.lock_status
+            - sensor.flap_battery_status
+            - sensor.loki_trips_outside_today
+            - sensor.loki_trips_outside_yesterday
+            - sensor.loki_outside_time_today
+            - sensor.loki_outside_yesterday

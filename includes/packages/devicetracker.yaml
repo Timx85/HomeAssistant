@@ -1,0 +1,77 @@
+homeassistant:
+  customize:
+    input_text.dummy_tiles_device_tracker:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 6           
+        row_height: 25px      
+        gap: 8px              
+        color: 'hsl(192, 96%, 48%)'                  
+        entities:
+          - entity: sensor.timo_status
+            label_state: sensor.timo_status
+            #image: 
+            style_template: "return 'background-image: url(\"/local/PhoneState/timo/' + state + '.jpg\");'"  
+            column: 1              
+            column_span: 3         
+            row: 1              
+            row_span: 4          
+            color: 'hsl(0, 100%, 100%)'    #white
+            color_on: 'hsl(0, 100%, 100%)'    #white
+            color_off: 'hsl(0, 100%, 100%)'    #white
+
+          - entity: device_tracker.ce0417142b50872202
+            #label_state: sensor.timo_status
+            column: 1              
+            column_span: 3         
+            row: 4              
+            row_span: 1
+            color: 'hsla(0, 100%, 100%, 0)'    #white
+            color_on: 'hsla(0, 100%, 100%, 0)'    #white
+            color_off: 'hsla(0, 100%, 100%, 0)'    #white
+            text_color: '#eee'     # optional
+            text_color_on: '#eee'   # optional
+            text_color_off: '#eee'  # optional
+            text_font_size: '0.7em'
+
+          - entity: sensor.danielle_status
+            label_state: sensor.danielle_status
+            #image: /local/
+            style_template: "return 'background-image: url(\"/local/PhoneState/danielle/' + state + '.jpg\");'"  
+            column: 4              
+            column_span: 3         
+            row: 1              
+            row_span: 4           
+            color: 'hsl(0, 100%, 100%)'    #white
+            color_on: 'hsl(0, 100%, 100%)'    #white
+            color_off: 'hsl(0, 100%, 100%)'    #white
+
+          - entity: device_tracker.ce11171b6d4c1f1b04
+            #label_state: sensor.danielle_status
+            column: 4              
+            column_span: 3        
+            row: 4              
+            row_span: 1
+            color: 'hsla(0, 100%, 100%, 0)'    #white
+            color_on: 'hsla(0, 100%, 100%, 0)'    #white
+            color_off: 'hsla(0, 100%, 100%, 0)'    #white
+            text_color: '#eee'     # optional
+            text_color_on: '#eee'   # optional
+            text_color_off: '#eee'  # optional
+            text_font_size: '0.7em'      
+
+
+input_text:
+  dummy_tiles_device_tracker:
+    name: dummy_tiles_device_tracker
+
+sensor:
+  - platform: template
+    sensors:
+      danielle_status:
+        value_template: "{% if is_state('device_tracker.ce11171b6d4c1f1b04', 'home') -%}home{%- else -%}Away{%- endif %}"
+
+  - platform: template
+    sensors:
+      timo_status:
+        value_template: "{% if is_state('device_tracker.ce0417142b50872202', 'home') -%}home{%- else -%}Away{%- endif %}"

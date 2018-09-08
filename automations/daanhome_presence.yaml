@@ -1,0 +1,68 @@
+- alias: 'Daan Away'
+  condition:
+    condition: state
+    entity_id: input_boolean.daniellehome
+    state: 'on'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+      to: 'not_home' 
+      for:
+        minutes: 3
+    - platform: state
+      entity_id: device_tracker.24181d5538ee #Phone Router
+      to: 'not_home' 
+      for:
+        minutes: 3
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.daniellehome
+
+- alias: 'Daan Home'
+  condition:
+    condition: state
+    entity_id: input_boolean.daniellehome
+    state: 'off'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+      to: 'home' 
+    - platform: state
+      entity_id: device_tracker.24181d5538ee #Phone Router
+      to: 'home'       
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.daniellehome
+    - delay: 00:01:00
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.keuken
+        volume: 0.2
+        delay: '00:00:04'
+        message: 'Welcome home Danielle!'
+
+- alias: 'HallwayonWhenDaanHome'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+      to: 'home' 
+    - platform: state
+      entity_id: device_tracker.24181d5538ee #Phone Router
+      to: 'home' 
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.daanhome
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"    
+  action:
+    - service: light.turn_on
+      entity_id: light.level_3
+      data:
+        brightness: 3
+    - delay: 00:03:00
+    - service: light.turn_off
+      entity_id: light.level_3

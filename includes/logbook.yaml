@@ -1,0 +1,35 @@
+exclude:
+  domains:
+    # - zwave
+    # - darksky
+  entities:
+    - automation.display_automations_lights__toggle_ui
+    - automation.notifytimokwark
+    - binary_sensor.sensor
+    - sensor.alarm_level
+    - sensor.alarm_level_2
+    - sensor.alarm_level_3
+    - sensor.alarm_level_4
+    - sensor.alarm_level_5
+    - sensor.alarm_type
+    - sensor.alarm_type_2
+    - sensor.alarm_type_3
+    - sensor.alarm_type_4
+    - sensor.alarm_type_5
+    - sensor.everspring_an180_plugin_onoff_module_sourcenodeid
+    - sensor.everspring_an180_plugin_onoff_module_sourcenodeid_2
+    - sensor.everspring_an158_plugin_meter_appliance_module_exporting
+    - sensor.everspring_an158_plugin_meter_appliance_module_interval
+    - sensor.everspring_an158_plugin_meter_appliance_module_interval_2
+    - sensor.everspring_an180_plugin_onoff_module_power_management
+    - sensor.fibaro_system_fgd212_dimmer_2_heat
+    - sensor.fibaro_system_fgd212_dimmer_2_power
+    - sensor.fibaro_system_fgd212_dimmer_2_power_2
+    - sensor.fibaro_system_fgd212_dimmer_2_power_management
+    - sensor.fibaro_system_fgd212_dimmer_2_sourcenodeid
+    - sensor.time
+    - sensor.trash_dayaftertomorrow
+    - sensor.trash_today
+    - sensor.trash_tomorrow
+    - sensor.yr_symbol
+

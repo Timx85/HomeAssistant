@@ -1,0 +1,32 @@
+homeassistant:
+  customize:
+    input_text.dummy_tiles_updatecustomui:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 2
+        row_height: 54px
+        gap: 8px                             
+        entities:
+          - entity: script.updatecustomui
+            label: Update customUI
+            icon: mdi:script
+            column: 1         
+            column_span: 1      
+            row: 1                
+            color: 'hsl(0, 0%, 80%)'    #grey            
+            icon_size: 18px
+            text_uppercase: false
+          - entity: script.updatetiles
+            label: Update tiles
+            icon: mdi:script
+            column: 2         
+            column_span: 1      
+            row: 1                
+            color: 'hsl(0, 0%, 80%)'    #grey            
+            icon_size: 18px
+            text_uppercase: false
+
+input_text:
+  dummy_tiles_updatecustomui:
+    name: dummy_tiles_updatecustomui
+

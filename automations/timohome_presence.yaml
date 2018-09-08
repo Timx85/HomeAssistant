@@ -1,0 +1,101 @@
+- alias: 'Timo Away'
+  condition:
+    condition: state
+    entity_id: input_boolean.timohome
+    state: 'on'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+      to: 'not_home' 
+      for:
+        minutes: 3
+    - platform: state
+      entity_id: device_tracker.30074d51bc9a #Phone Router
+      to: 'not_home' 
+      for:
+        minutes: 3
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.timohome
+
+- alias: 'Timo Home'
+  condition:
+    condition: state
+    entity_id: input_boolean.timohome
+    state: 'off'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+      to: 'home' 
+    - platform: state
+      entity_id: device_tracker.30074d51bc9a #Phone Router
+      to: 'home'   
+  action:
+    # - service: homeassistant.turn_on
+    #   entity_id: input_boolean.timohome
+    - delay: 00:01:00
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.keuken
+        volume: 0.2
+        delay: '00:00:04'
+        message: 'Welcome home Timo!'
+
+# - alias: 'HallwayonWhenTimoHome'
+#   trigger:
+#     - platform: state
+#       entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+#       to: 'home' 
+#     - platform: state
+#       entity_id: device_tracker.30074d51bc9a #Phone Router
+#       to: 'home' 
+#   condition:
+#     # - condition: state
+#     #   entity_id: input_boolean.timohome
+#     #   state: 'off'
+#     - condition: state
+#       entity_id: sun.sun
+#       state: "below_horizon"
+#     # - platform: state
+#     #   entity_id: device_tracker.galaxy_s8 #BT Galaxy s8
+#     #   to: 'home'       
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.level_3
+#       data:
+#         brightness: 3
+#     - delay: 00:03:00
+#     - service: light.turn_off
+#       entity_id: light.level_3
+
+- alias: 'TimoHomeTest'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+      to: 'home' 
+    - platform: state
+      entity_id: device_tracker.30074d51bc9a #Phone Router
+      to: 'home' 
+  condition:
+    - condition: state
+      entity_id: input_boolean.timohome
+      state: 'off'   
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.timohome
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"  
+    - service: light.turn_on
+      entity_id: light.level_3
+      data:
+        brightness: 3
+    - service: switch.turn_on
+      entity_id: group.woonkamer
+    - service: light.turn_on
+      entity_id: group.keuken
+    - delay: 00:03:00
+    - service: light.turn_off
+      entity_id: light.level_3
+
+  

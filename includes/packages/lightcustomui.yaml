@@ -1,0 +1,111 @@
+homeassistant:
+  customize:
+    input_text.dummy_customlighttiles:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 3
+        row_height: 25px
+        # column_width: 75px
+        gap: 10px
+        text_size: 1em
+        color: '#555B65'
+        color_on: '#F0C209'
+        color_off: '#555B65'
+        entities:
+          #Lights
+          - entity: group.keuken
+            label: Keuken
+            icon: mdi:ceiling-light
+            more_info: light.level
+            column: 1
+            row: 1
+            row_span: 2
+          - entity: group.woonkamer
+            label: Woonkamer
+            icon: mdi:lamp
+            more_info: group.woonkamer
+            column: 2
+            row: 1
+            row_span: 2
+          - entity: switch.switch
+            label: Werkkamer
+            icon: mdi:school
+            column: 3
+            row: 1
+            row_span: 2
+          - entity: light.firstfloorlights
+            label: First Floor Lights
+            style_template: "return 'text-transform: none; min-height: 25px;';"
+            icon: mdi:power
+            column_span: 3
+            row: 3
+          # - entity: light.level
+          #   label: Kitchen
+          #   icon: mdi:door
+          #   column: 1
+          #   row: 4
+          #   row_span: 2
+          # - entity: light.level
+          #   label: Kitchen
+          #   icon: mdi:led-strip
+          #   column: 2
+          #   row: 4
+          #   row_span: 2
+          # - entity: light.level
+          #   label: Kitchen
+          #   icon: mdi:spotlight-beam
+          #   column: 3
+          #   row: 4
+          #   row_span: 2
+          # - entity: switch.switch_2 #group.hall_lights
+          #   label: Hall
+          #   icon: mdi:ceiling-light
+          #   column: 1
+          #   row: 6
+          #   row_span: 2
+          # - entity: switch.switch_2 #group.landing_lights
+          #   label: Landing
+          #   icon: mdi:ceiling-light
+          #   column: 2
+          #   row: 6
+          #   row_span: 2
+          # - entity: switch.switch_2 #light.bed_two
+          #   label: Bed2
+          #   icon: mdi:ceiling-light
+          #   column: 1
+          #   row: 8
+          #   style_template: "return 'text-transform: none; min-height: 25px;';"
+          # - entity: switch.switch_2 #light.bedside2
+          #   label: Bed2
+          #   icon: mdi:lamp
+          #   column: 2
+          #   row: 8
+          #   style_template: "return 'text-transform: none; min-height: 25px;';"
+          # - entity: switch.switch_2 #switch.bed_two_floor_light
+          #   label: Bed2
+          #   icon: mdi:power-plug
+          #   column: 3
+          #   row: 8
+          #   style_template: "return 'text-transform: none; min-height: 25px;';"
+          # - entity: switch.switch_2 #light.bed_three
+          #   label: Bed3
+          #   icon: mdi:ceiling-light
+          #   column: 1
+          #   row: 9
+          #   style_template: "return 'text-transform: none; min-height: 25px;';"
+          # - entity: switch.switch_2 #light.bedside3
+          #   label: Bed3
+          #   icon: mdi:lamp
+          #   column: 2
+          #   row: 9
+          #   style_template: "return 'text-transform: none; min-height: 25px;';"
+          # - entity: switch.switch_2 #switch.bed_three_floor_light
+          #   label: Bed3
+          #   icon: mdi:power-plug
+          #   column: 3
+          #   row: 9
+          #   style_template: "return 'text-transform: none; min-height: 25px;';"
+
+input_text:
+  dummy_customlighttiles:
+    name: customlightstiles

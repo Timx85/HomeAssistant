@@ -1,0 +1,42 @@
+- alias: 'Wasmachine Started'
+  condition:
+    condition: state
+    entity_id: input_boolean.statuswasmachine
+    state: 'off'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.everspring_an158_plugin_meter_appliance_module_power #ENERGY METER
+      above: '0.0'
+      for:
+        minutes: 1      
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.statuswasmachine
+
+- alias: 'Wasmachine Finished'
+  condition:
+    condition: state
+    entity_id: input_boolean.statuswasmachine
+    state: 'on'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.everspring_an158_plugin_meter_appliance_module_power #ENERGY METER
+      below: '0.1'
+      for:
+        minutes: 1      
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'Wasmachine is finished Timo!'
+        disable_notification: false
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.statuswasmachine 
+    - delay: '00:00:10'
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.keuken
+        volume: 0.2
+        delay: '00:00:04'
+        message: 'Wasmachine is finished Danielle!'

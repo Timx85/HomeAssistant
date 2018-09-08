@@ -1,0 +1,31 @@
+############################################################
+#
+# Turn all lights off with 1 switch
+#
+############################################################
+script:
+    updatelights:
+      alias: Turn all lights Off
+      sequence:
+        - service: switch.turn_off
+          entity_id: group.woonkamer
+        - service: light.turn_off
+          entity_id: group.keuken
+    updatelightsdownstairs:
+      alias: Downstairs lights on
+      sequence:
+        - service: switch.turn_on
+          entity_id: group.woonkamer
+        - service: light.turn_on
+          entity_id: group.keuken
+    sonosmytest:
+      alias: sonons say test
+      sequence:
+        - service: script.sonos_say
+          data:
+            sonos_entity: media_player.keuken
+            volume: 0.3
+            delay: '00:00:04'
+            message: 'Dryer is Done Timo!'
+            #data_template:  “Temperature is {{ states.sensor.now_temperature.state }}.”
+    

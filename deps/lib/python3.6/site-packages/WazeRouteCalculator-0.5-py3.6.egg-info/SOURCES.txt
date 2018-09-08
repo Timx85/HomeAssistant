@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+WazeRouteCalculator/WazeRouteCalculator.py
+WazeRouteCalculator/__init__.py
+WazeRouteCalculator/__version__.py
+WazeRouteCalculator.egg-info/PKG-INFO
+WazeRouteCalculator.egg-info/SOURCES.txt
+WazeRouteCalculator.egg-info/dependency_links.txt
+WazeRouteCalculator.egg-info/requires.txt
+WazeRouteCalculator.egg-info/top_level.txt

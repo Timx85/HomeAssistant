@@ -1,0 +1,34 @@
+- id: kitchenonwhenalarmgoes
+  alias: Kitchenlightonwithalarm
+  trigger:
+  - platform: template
+    value_template: '{{ states.sensor.time.state == states.sensor.alarm_clock_time_long.state }}'
+  condition:
+  - condition: state
+    entity_id: input_boolean.alarm_clock_status
+    state: 'on'
+  - condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  - condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    - service: light.turn_on
+      entity_id: group.keuken
+    - delay: 00:45:00
+    - service: light.turn_off
+      entity_id: group.keuken
+  # - data:
+  #     entity_id: group.keuken
+  #   entity_id: group.keuken
+  #   service: light.turn_on
+  # delay: 00:00:30
+  # - data:
+  #     entity_id: group.keuken
+  #   entity_id: group.keuken  
+  #   service: light.turn_off

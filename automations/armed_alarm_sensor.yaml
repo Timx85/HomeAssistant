@@ -1,0 +1,132 @@
+
+- alias: 'Unexpected motion'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        #entity_id: input_boolean.timohome
+        #state: 'off'
+        entity_id: group.family
+        state: ´not_home´
+      - condition: state
+        entity_id: input_boolean.guestmode
+        state: 'off'
+  trigger:
+    - platform: state 
+      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar  
+      to: '8'
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/LastMotion.jpg"
+    - delay: 
+        seconds: 5
+    - service: telegram_bot.send_message
+        data_template:
+          #title: 'Presence detection'
+          target: !secret telegram_Timo_id
+          message: 'The alarm was triggered'
+    - service: telegram_bot.send_photo  
+        data:
+          target: !secret telegram_Timo_id
+          file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+
+- alias: 'guest motion'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.timohome
+        state: 'off'
+        # entity_id: group.family
+        # state: not_home
+      - condition: state
+        entity_id: input_boolean.guestmode
+        state: 'on'
+  trigger:
+    - platform: state 
+      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar  
+      to: '8'
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/LastMotion.jpg"
+    - delay: 
+        seconds: 5
+    - service: telegram_bot.send_message
+        data_template:
+          #title: 'Presence detection'
+          target: !secret telegram_Timo_id
+          message: 'The guest alarm was triggered'
+    - service: telegram_bot.send_photo  
+        data:
+          target: !secret telegram_Timo_id
+          file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+
+- alias: 'Bedtime motion'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.timohome
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.guestmode
+        state: 'off'
+      - condition: time
+        after: '23:30:00'
+        before: '06:00:00'
+  trigger:
+    - platform: state 
+      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar  
+      to: '8'
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/LastMotion.jpg"
+    - delay: 
+        seconds: 5
+    - service: telegram_bot.send_message
+        data_template:
+          target: !secret telegram_Timo_id
+          message: 'The bed alarm was triggered'
+    - service: telegram_bot.send_photo  
+        data:
+          target: !secret telegram_Timo_id
+          file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+
+- alias: 'Battery livingroom multi'
+  initial_state: 'off'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.zwave_battery_living_room_motion_sensor
+      below: 25
+    - platform: numeric_state
+      entity_id: sensor.zwave_battery_living_room_motion_sensor
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.zwave_battery_living_room_motion_sensor
+      below: 5
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: "The livingroom multi sensor is at {{ states('sensor.zwave_battery_living_room_motion_sensor') }}% battery, it uses a CR123A lithium battery"
+        disable_notification: false
+

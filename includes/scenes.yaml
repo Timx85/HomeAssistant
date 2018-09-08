@@ -1,0 +1,25 @@
+  - name: allelampenuit
+    entities:
+     switch.stekker1_switch:
+      state: off
+     light.stekker2_level:
+      state: off
+     light.fibarodimmer2_level:
+      state: off
+     light.fibarodimmer1_level:
+      state: off
+     light.hue_lightstrip_plus_1:
+      state: off
+
+  - name: allelampenaan
+    entities:
+     switch.stekker1_switch:
+      state: on
+     light.stekker2_level:
+      state: on
+     light.fibarodimmer2_level:
+      state: on
+     light.fibarodimmer1_level:
+      state: on
+     light.hue_lightstrip_plus_1:
+      state: on

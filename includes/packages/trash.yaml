@@ -1,0 +1,137 @@
+#
+# Fetch Trash collecting dates from Github and fill sensor
+# with data of which container to put on the street.
+#
+
+homeassistant:
+  customize:
+    sensor.trash_today:
+      friendly_name: 'Vandaag'
+      icon: mdi:delete
+    sensor.trash_tomorrow:
+      friendly_name: 'Morgen'
+      icon: mdi:delete
+    sensor.trash_dayaftertomorrow:
+      friendly_name: 'Overmorgen'
+      icon: mdi:delete
+
+    input_text.dummy_tiles_trash:
+      custom_ui_state_card: state-card-tiles
+      config:
+        columns: 1
+        row_height: 50px
+        gap: 0px
+        text_font_size: '0.7em'                             
+        entities:
+          - entity: sensor.trash_today
+            more_info: group.trashsensors
+            label_template: "if (state === 'Geen') return 'Geen afvalinzameling vandaag'; else return 'Vandaag mag de ' + state + ' bak aan de straat';"  
+            text_align: center
+            #icon: mdi:delete
+            column: 1  
+            column_span: 1    
+            row: 1             
+            color: 'hsl(0, 0%, 98%)'    #white
+            color_on: 'hsl(0, 0%, 98%)'    #white
+            color_off: 'hsl(0, 0%, 98%)'    #white
+            text_color: 'hsl(0, 0%, 0%)'    #black
+            text_color_on: 'hsl(0, 0%, 0%)'    #black
+            text_color_off: 'hsl(0, 0%, 0%)' #black 
+            #style_template: "if (state === 'geen') return 'background-color: hsl(0, 0%, 98%)'; else return 'background-color: hsl(37, 96%, 48%)';"
+
+sensor:
+  - platform: rest
+    resource: https://raw.githubusercontent.com/Timx85/HomeAssistant/master/resources/gad-calendar.json
+    name: trash_today
+    scan_interval: 3600
+    value_template: >
+      {% set now = as_timestamp(now()) %}
+      {% set today = now | timestamp_custom("%d/%m/%Y") %}
+      {% set containerType = value_json.days[ today ] %}
+      {% if containerType | trim != "" %}
+        {% set trash = value_json.legend[ containerType ] %}
+        {{ trash }}
+      {% else %}
+        Geen
+      {% endif %}
+  - platform: rest
+    resource: https://raw.githubusercontent.com/Timx85/HomeAssistant/master/resources/gad-calendar.json
+    name: trash_tomorrow
+    scan_interval: 3600
+    value_template: >
+      {% set now = as_timestamp(now()) %}
+      {% set oneDay = 86400 %}
+      {% set nextDay = now + oneDay %}
+      {% set tomorrow = nextDay | timestamp_custom("%d/%m/%Y") %}
+      {% set containerType = value_json.days[ tomorrow ] %}
+      {% if containerType | trim != "" %}
+        {% set trash = value_json.legend[ containerType ] %}
+        {{ trash }}
+      {% else %}
+        Geen
+      {% endif %}
+
+  - platform: rest
+    resource: https://raw.githubusercontent.com/Timx85/HomeAssistant/master/resources/gad-calendar.json
+    name: trash_dayaftertomorrow
+    scan_interval: 3600
+    value_template: >
+      {% set now = as_timestamp(now()) %}
+      {% set TwoDay = 172800 %}
+      {% set nextDay = now + TwoDay %}
+      {% set DayAftertomorrow = nextDay | timestamp_custom("%d/%m/%Y") %}
+      {% set containerType = value_json.days[ DayAftertomorrow ] %}
+      {% if containerType | trim != "" %}
+        {% set trash = value_json.legend[ containerType ] %}
+        {{ trash }}
+      {% else %}
+        Geen
+      {% endif %}
+
+automation:
+  - id: TrashToday
+    alias: 'Notify of which container will be pickedup today'
+    initial_state: 'on'
+    trigger:
+      platform: time
+      at: '06:00:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.notify_trash
+        state: 'on'
+      - condition: template
+        value_template: "{{ states('sensor.trash_today') != 'Geen' }}"
+      - condition: template
+        value_template: "{{ states.sensor.trash_today.state | trim != '' }}"
+    action:
+      - service: telegram_bot.send_message
+        data_template:
+          title: 'Afvalinzameling'
+          target: !secret telegram_Timo_id
+          message: 'Vandaag kan de {{ states.sensor.trash_today.state }} container aan de straat.'
+          disable_notification: false
+  - id: TrashTomorrow
+    alias: 'Notify of which container will be pickedup tomorrow'
+    initial_state: 'on'
+    trigger:
+      platform: time
+      at: '19:00:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.notify_trash
+        state: 'on'
+      - condition: template
+        value_template: "{{ states('sensor.trash_tomorrow') != 'Geen' }}"
+      - condition: template
+        value_template: "{{ states.sensor.trash_tomorrow.state | trim != '' }}"
+    action:
+      - service: telegram_bot.send_message
+        data_template:
+          title: 'Afvalinzameling'
+          target: !secret telegram_Timo_id
+          message: 'Morgen kan de {{ states.sensor.trash_tomorrow.state }} container aan de straat.'
+          disable_notification: false
+
+input_text:
+  dummy_tiles_trash:
+    name: dummy_tiles_trash

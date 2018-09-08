@@ -1,0 +1,124 @@
+sensor:
+  - platform: template
+    sensors:
+      br_day_forecaste1:
+        value_template: >
+          {{(as_timestamp(now())+ (86400)) | timestamp_custom("%a",true)}}
+
+      br_day_forecaste2:
+        value_template: >
+          {{(as_timestamp(now())+ (172800)) | timestamp_custom("%a",true)}}
+
+      br_day_forecaste3:
+        value_template: >
+          {{(as_timestamp(now())+ (259200)) | timestamp_custom("%a",true)}}
+      dark_sky_template:
+        value_template: >
+          {% if is_state('sensor.dark_sky_icon', 'clear-day') %}
+            mdi:weather-sunny
+          {% elif is_state('sensor.dark_sky_icon', 'clear-night') %}
+            mdi:weather-night
+          {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+            mdi:weather-rainy
+          {% elif is_state('sensor.dark_sky_icon', 'snow') %}
+            mdi:weather-snowy
+          {% elif is_state('sensor.dark_sky_icon', 'sleet') %}
+            mdi:weather-snowy-rainy
+          {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+            mdi:weather-windy-variant
+          {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+            mdi:weather-fog
+          {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+            mdi:weather-cloudy
+          {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-day') or is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+            mdi:weather-partlycloudy
+          {% elif is_state('sensor.dark_sky_icon', 'hail') %}
+            mdi:weather-hail
+          {% elif is_state('sensor.dark_sky_icon', 'thunderstorm') %}
+            mdi:weather-lightning
+          {% else %}
+            mdi:help-circle
+          {% endif %}
+      buienradar_d1_template:
+        value_template: >
+          {% if is_state('sensor.br_symbol_1d', 'Vrijwel onbewolkt (zonnig/helder)') %}
+            mdi:weather-sunny
+          {% elif is_state('sensor.br_symbol_1d', 'Vrijwel onbewolkt (zonnig/helder)') %}
+            mdi:weather-night
+          {% elif is_state('sensor.br_symbol_1d', 'Zwaar bewolkt en regen') %}
+            mdi:weather-rainy
+          {% elif is_state('sensor.br_symbol_1d', 'Zware sneeuwval') %}
+            mdi:weather-snowy
+          {% elif is_state('sensor.br_symbol_1d', 'Afwisselend bewolkt met lichte sneeuwval') %}
+            mdi:weather-snowy-rainy
+          {% elif is_state('sensor.br_symbol_1d', 'wind') %}
+            mdi:weather-windy-variant
+          {% elif is_state('sensor.br_symbol_1d', '	Opklaring en lokaal nevel of mist') %}
+            mdi:weather-fog
+          {% elif is_state('sensor.br_symbol_1d', 'Zwaar bewolkt') %}
+            mdi:weather-cloudy
+          {% elif is_state('sensor.br_symbol_1d', 'Mix van opklaringen en middelbare of lage bewolking') or is_state('sensor.br_symbol_1d', 'Mix van opklaringen en middelbare of lage bewolking') %}
+            mdi:weather-partlycloudy
+          {% elif is_state('sensor.br_symbol_1d', 'Zwaar bewolkt met regen en winterse neerslag') %}
+            mdi:weather-hail
+          {% elif is_state('sensor.br_symbol_1d', 'Bewolkt en kans op enkele pittige (onweers)buien') %}
+            mdi:weather-lightning
+          {% else %}
+            mdi:help-circle
+          {% endif %}
+      buienradar_d2_template:
+        value_template: >
+          {% if is_state('sensor.br_symbol_2d', 'Vrijwel onbewolkt (zonnig/helder)') %}
+            mdi:weather-sunny
+          {% elif is_state('sensor.br_symbol_2d', 'Vrijwel onbewolkt (zonnig/helder)') %}
+            mdi:weather-night
+          {% elif is_state('sensor.br_symbol_2d', 'Zwaar bewolkt en regen') %}
+            mdi:weather-rainy
+          {% elif is_state('sensor.br_symbol_2d', 'Zware sneeuwval') %}
+            mdi:weather-snowy
+          {% elif is_state('sensor.br_symbol_2d', 'Afwisselend bewolkt met lichte sneeuwval') %}
+            mdi:weather-snowy-rainy
+          {% elif is_state('sensor.br_symbol_2d', 'wind') %}
+            mdi:weather-windy-variant
+          {% elif is_state('sensor.br_symbol_2d', '	Opklaring en lokaal nevel of mist') %}
+            mdi:weather-fog
+          {% elif is_state('sensor.br_symbol_2d', 'Zwaar bewolkt') %}
+            mdi:weather-cloudy
+          {% elif is_state('sensor.br_symbol_2d', 'Mix van opklaringen en middelbare of lage bewolking') or is_state('sensor.br_symbol_2d', 'Mix van opklaringen en middelbare of lage bewolking') %}
+            mdi:weather-partlycloudy
+          {% elif is_state('sensor.br_symbol_2d', 'Zwaar bewolkt met regen en winterse neerslag') %}
+            mdi:weather-hail
+          {% elif is_state('sensor.br_symbol_2d', 'Bewolkt en kans op enkele pittige (onweers)buien') %}
+            mdi:weather-lightning
+          {% else %}
+            mdi:help-circle
+          {% endif %}
+      buienradar_d3_template:
+        value_template: >
+          {% if is_state('sensor.br_symbol_3d', 'Vrijwel onbewolkt (zonnig/helder)') %}
+            mdi:weather-sunny
+          {% elif is_state('sensor.br_symbol_3d', 'Vrijwel onbewolkt (zonnig/helder)') %}
+            mdi:weather-night
+          {% elif is_state('sensor.br_symbol_3d', 'Zwaar bewolkt en regen') %}
+            mdi:weather-rainy
+          {% elif is_state('sensor.br_symbol_3d', 'Zware sneeuwval') %}
+            mdi:weather-snowy
+          {% elif is_state('sensor.br_symbol_3d', 'Afwisselend bewolkt met lichte sneeuwval') %}
+            mdi:weather-snowy-rainy
+          {% elif is_state('sensor.br_symbol_3d', 'wind') %}
+            mdi:weather-windy-variant
+          {% elif is_state('sensor.br_symbol_3d', '	Opklaring en lokaal nevel of mist') %}
+            mdi:weather-fog
+          {% elif is_state('sensor.br_symbol_3d', 'Zwaar bewolkt') %}
+            mdi:weather-cloudy
+          {% elif is_state('sensor.br_symbol_3d', 'Mix van opklaringen en middelbare of lage bewolking') or is_state('sensor.br_symbol_3d', 'Mix van opklaringen en middelbare of lage bewolking') %}
+            mdi:weather-partlycloudy
+          {% elif is_state('sensor.br_symbol_3d', 'Zwaar bewolkt met regen en winterse neerslag') %}
+            mdi:weather-hail
+          {% elif is_state('sensor.br_symbol_3d', 'Bewolkt en kans op enkele pittige (onweers)buien') %}
+            mdi:weather-lightning
+          {% else %}
+            mdi:help-circle
+          {% endif %}
+        
+

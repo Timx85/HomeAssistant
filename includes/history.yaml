@@ -1,0 +1,9 @@
+exclude:
+  domains:
+    - sensor
+    - darksky
+  entities:
+    - automation.display_automations_lights__toggle_ui
+    - automation.notifytimokwark
+
+
