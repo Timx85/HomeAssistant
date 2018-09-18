@@ -153,10 +153,11 @@ views:
       - type: picture
         image: /local/cam_captures/LastMotion.jpg
         title: Last Motion
-      - type: picture-entity
+      - type: picture-glance
         image: /local/cam_captures/LastMotion.jpg
         name: Last Motion
-        entity: sensor.foscammotionsensor
+        entities: 
+          - sensor.foscammotionsensor
 
     # Specify a tab icon if you want the view tab to be an icon.
   - icon: mdi:home-assistant

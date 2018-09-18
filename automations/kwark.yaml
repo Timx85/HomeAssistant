@@ -1,0 +1,13 @@
+- id: NotifyTimoKwark
+  alias: NotifyTimoKwark
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '21:00:00'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Kwark'
+        target: !secret telegram_Timo_id
+        message: 'Kwark'
+        disable_notification: false

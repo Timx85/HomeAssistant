@@ -1,0 +1,59 @@
+- id: TurnLightsOnLuxLow
+  alias: TurnLightsOnLuxLow
+  trigger:
+  - platform: numeric_state 
+    entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+    below: 13
+  condition:
+    condition: and
+    conditions: 
+      - condition: time
+        after: '06:00:00'
+        before: '21:00:00'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: group.woonkamer
+            state: 'off'
+          - condition: state
+            entity_id: group.keuken
+            state: 'off'
+  action:
+  - data:
+      entity_id: group.woonkamer
+    entity_id: group.woonkamer
+    service: switch.turn_on
+  - data:
+      entity_id: group.keuken
+    entity_id: group.keuken
+    service: light.turn_on
+
+- id: TurnLightsOffLuxHigh
+  alias: TurnLightsOffLuxHigh
+  trigger:
+  - platform: numeric_state 
+    entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+    above: 13
+  condition:
+    condition: and
+    conditions: 
+      - condition: time
+        after: '06:00:00'
+        before: '21:00:00'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: group.woonkamer
+            state: 'on'
+          - condition: state
+            entity_id: group.keuken
+            state: 'on'
+  action:
+  - data:
+      entity_id: group.woonkamer
+    entity_id: group.woonkamer
+    service: switch.turn_off
+  - data:
+      entity_id: group.keuken
+    entity_id: group.keuken
+    service: light.turn_off

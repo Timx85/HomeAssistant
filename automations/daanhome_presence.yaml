@@ -50,19 +50,23 @@
       entity_id: device_tracker.24181d5538ee #Phone Router
       to: 'home' 
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.daanhome
-        state: 'off'
-      - condition: state
-        entity_id: sun.sun
-        state: "below_horizon"    
+    - condition: state
+      entity_id: input_boolean.daanhome
+      state: 'off' 
   action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.daanhome
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"  
     - service: light.turn_on
       entity_id: light.level_3
       data:
         brightness: 3
+    - service: switch.turn_on
+      entity_id: group.woonkamer
+    - service: light.turn_on
+      entity_id: group.keuken
     - delay: 00:03:00
     - service: light.turn_off
-      entity_id: light.level_3
+      entity_id: light.level_

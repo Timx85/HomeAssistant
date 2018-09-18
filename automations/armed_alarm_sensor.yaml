@@ -7,7 +7,7 @@
         #entity_id: input_boolean.timohome
         #state: 'off'
         entity_id: group.family
-        state: ´not_home´
+        state: 'not_home'
       - condition: state
         entity_id: input_boolean.guestmode
         state: 'off'
@@ -27,14 +27,14 @@
     - delay: 
         seconds: 5
     - service: telegram_bot.send_message
-        data_template:
-          #title: 'Presence detection'
-          target: !secret telegram_Timo_id
-          message: 'The alarm was triggered'
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'The alarm was triggered'
     - service: telegram_bot.send_photo  
-        data:
-          target: !secret telegram_Timo_id
-          file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+      data:
+        target: !secret telegram_Timo_id
+        file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
 
 - alias: 'guest motion'
   condition:
@@ -64,14 +64,14 @@
     - delay: 
         seconds: 5
     - service: telegram_bot.send_message
-        data_template:
-          #title: 'Presence detection'
-          target: !secret telegram_Timo_id
-          message: 'The guest alarm was triggered'
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'The guest alarm was triggered'
     - service: telegram_bot.send_photo  
-        data:
-          target: !secret telegram_Timo_id
-          file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+      data:
+        target: !secret telegram_Timo_id
+        file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
 
 - alias: 'Bedtime motion'
   condition:
@@ -102,13 +102,13 @@
     - delay: 
         seconds: 5
     - service: telegram_bot.send_message
-        data_template:
-          target: !secret telegram_Timo_id
-          message: 'The bed alarm was triggered'
+      data_template:
+        target: !secret telegram_Timo_id
+        message: 'The bed alarm was triggered'
     - service: telegram_bot.send_photo  
-        data:
-          target: !secret telegram_Timo_id
-          file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+      data:
+        target: !secret telegram_Timo_id
+        file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
 
 - alias: 'Battery livingroom multi'
   initial_state: 'off'

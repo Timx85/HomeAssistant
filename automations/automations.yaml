@@ -10,30 +10,6 @@
    data:
     name: dark
 
-- id: NotifyTimoKwark
-  alias: NotifyTimoKwark
-  initial_state: 'on'
-  trigger:
-  # - platform: state
-  #   entity_id: evice_tracker.ce0417142b50872202
-  #   # Optional
-  #   from: 'not_home'
-  #   # Optional
-  #   to: 'home'
-    platform: time
-    at: '21:00:00'
-  action:
-    - service: telegram_bot.send_message
-      data_template:
-        #title: 'Kwark'
-        target: !secret telegram_Timo_id
-        message: 'Kwark'
-        disable_notification: false
-    # - service: tts.google_say
-    #   entity_id: media_player.samsungtv
-    #   data:
-    #     message: 'The dryer is finished Timo.'
-
 - id: NotifyTimoHome
   alias: NotifyTimoHome
   initial_state: 'on'
@@ -94,10 +70,10 @@
 - id: 'NotifyTimoDaanHome'
   alias: Danielle Home
   trigger:
-  - entity_id: device_tracker.ce11171b6d4c1f1b04
-    from: not_home
-    platform: state
-    to: home
+  - platform: zone
+    event: enter
+    zone: zone.Home
+    entity_id: device_tracker.ce11171b6d4c1f1b04
   action:
     - service: telegram_bot.send_message
       data_template:
@@ -114,7 +90,7 @@
     entity_id: device_tracker.ce11171b6d4c1f1b04
     # Optional
     from: 'Manege'
-    to: not_home
+    to: 'not_home' 
   action:
     - service: telegram_bot.send_message
       data_template:
@@ -127,11 +103,13 @@
   alias: NotifyDaanAwayFromWork
   initial_state: 'on'
   trigger:
-  - platform: state
+  - platform: zone
     entity_id: device_tracker.ce11171b6d4c1f1b04
     # Optional
-    from: 'Minddistrict'
-    to: not_home
+    zone: zone.minddistrict
+    event: leave
+    #from: 'Minddistrict'
+    #to: 'not_home'
   action:
     - service: telegram_bot.send_message
       data_template:

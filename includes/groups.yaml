@@ -32,6 +32,9 @@ woonkamer_view:
   - camera.woonkamer1
   - sensor.foscammotionsensor
   - script.living_room_snapshot
+  - device_tracker.ce11171b6d4c1f1b04
+  - sensor.daan2home
+  - sensor.daan_to_home
 
 slaapkamer_view:
  view: yes

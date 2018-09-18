@@ -68,7 +68,7 @@
 #     - service: light.turn_off
 #       entity_id: light.level_3
 
-- alias: 'TimoHomeTest'
+- alias: 'HallwayonWhenTimoHome'
   trigger:
     - platform: state
       entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
