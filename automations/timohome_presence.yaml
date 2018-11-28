@@ -41,33 +41,6 @@
         delay: '00:00:04'
         message: 'Welcome home Timo!'
 
-# - alias: 'HallwayonWhenTimoHome'
-#   trigger:
-#     - platform: state
-#       entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
-#       to: 'home' 
-#     - platform: state
-#       entity_id: device_tracker.30074d51bc9a #Phone Router
-#       to: 'home' 
-#   condition:
-#     # - condition: state
-#     #   entity_id: input_boolean.timohome
-#     #   state: 'off'
-#     - condition: state
-#       entity_id: sun.sun
-#       state: "below_horizon"
-#     # - platform: state
-#     #   entity_id: device_tracker.galaxy_s8 #BT Galaxy s8
-#     #   to: 'home'       
-#   action:
-#     - service: light.turn_on
-#       entity_id: light.level_3
-#       data:
-#         brightness: 3
-#     - delay: 00:03:00
-#     - service: light.turn_off
-#       entity_id: light.level_3
-
 - alias: 'HallwayonWhenTimoHome'
   trigger:
     - platform: state

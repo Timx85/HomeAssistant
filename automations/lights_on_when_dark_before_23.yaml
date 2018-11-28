@@ -3,21 +3,22 @@
   trigger:
   - platform: numeric_state 
     entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
-    below: 13
+    below: 25
   condition:
-    condition: and
-    conditions: 
-      - condition: time
-        after: '06:00:00'
-        before: '21:00:00'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: group.woonkamer
-            state: 'off'
-          - condition: state
-            entity_id: group.keuken
-            state: 'off'
+    - condition: time
+      after: '06:00:00'
+      before: '21:00:00'
+    - condition: state
+      entity_id: group.family
+      state: 'home' 
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.woonkamer
+          state: 'off'
+        - condition: state
+          entity_id: group.keuken
+          state: 'off'
   action:
   - data:
       entity_id: group.woonkamer
@@ -33,21 +34,22 @@
   trigger:
   - platform: numeric_state 
     entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
-    above: 13
+    above: 25
   condition:
-    condition: and
-    conditions: 
-      - condition: time
-        after: '06:00:00'
-        before: '21:00:00'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: group.woonkamer
-            state: 'on'
-          - condition: state
-            entity_id: group.keuken
-            state: 'on'
+    - condition: time
+      after: '06:00:00'
+      before: '22:45:00'
+    - condition: state
+      entity_id: group.family
+      state: 'home' 
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.woonkamer
+          state: 'on'
+        - condition: state
+          entity_id: group.keuken
+          state: 'on'
   action:
   - data:
       entity_id: group.woonkamer

@@ -11,30 +11,22 @@ default_view:
   - group.forecast_info
   - group.afvalinzameling
   - group.button_info
-
-Lights:
-  view: yes
-  name: Lights
-  entities:
-  - group.alllights  
   
 woonkamer_view:
  view: yes
  name: Woonkamer
  icon: mdi:home
  entities:
-  - group.woonkamer
-  - group.Keuken
-  - group.afvalinzameling
-  - group.Devicetracker
   - group.OverigeApparaten
-  - group.Weerfront
   - camera.woonkamer1
   - sensor.foscammotionsensor
   - script.living_room_snapshot
+  - sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
   - device_tracker.ce11171b6d4c1f1b04
   - sensor.daan2home
   - sensor.daan_to_home
+  - sensor.FoscamMotionDetectionStatus
+  - switch.foscam_motion
 
 slaapkamer_view:
  view: yes
@@ -43,39 +35,8 @@ slaapkamer_view:
  entities:
   - group.slaapkamer
   - group.alarm_clock
-  - script.updatelights
-  - script.updatelightsdownstairs
-  
-Buiten_view:
- view: yes
- name: Buiten
- icon: mdi:pine-tree
- entities:
-  - group.buiten
-  - group.CatFlap
+  - group.alllights 
 
-GoogleMaps:
- view: yes
- name: GoogleMaps
- icon: mdi:google-maps
- entities:
-  - group.Weer
-
-Control View:
-  view: yes
-  name: C
-  icon: mdi:security-home #camcorder-box
-  entities:
-   - group.alarm_clock
-#   - group.Automations
-#   - group.zwave  
-
-TestGroup:
- view: yes
- name: TestGroup
- icon: mdi:test-tube
- entities:
-  - group.testgroup2 
 #################################################################
 ## Groups
 #################################################################
@@ -85,7 +46,6 @@ woonkamer:
  entities:
   - switch.switch
   - switch.switch_2
-  - input_text.remote_control
 
 Keuken:
  name: Keuken
@@ -93,24 +53,12 @@ Keuken:
  entities:
   - light.level
 
-  
-buiten:
-  name: ' '
-  entities:
-      - input_text.br_tiles
-      - input_text.br_forecast_tiles
-
 Family:
   name: Device Tracker
   entities:
   - device_tracker.ce0417142b50872202
   - device_tracker.ce11171b6d4c1f1b04
   #- device_tracker.3cbbfdf1ee2b #Galaxy Tablet
-
-Devicetracker:
- name: Device Tracker
- entities:
-  - input_text.dummy_tiles_device_tracker
 
 OverigeApparaten:
   name: Overige Apparaten
@@ -134,56 +82,6 @@ proximity:
   - input_boolean.timohome
   - input_boolean.daniellehome
   
-zwave:
- name: zWave devices
- entities:
-  - zwave.aeotec_zw090_zstick_gen5_eu 
-  - zwave.stekker1
-  - zwave.stekker2
-  - zwave.stekker3
-  - zwave.fibarodimmer1
-  # - zwave.fibarodimmer2
-  # - zwave.slaapkamer_dimmer
-
-automationdisable:
- name: Automation Disable
- control: hidden
- entities:
-  - input_boolean.disablekerst
-  - input_boolean.notify_trash
-
-Weer:
-  name: Weer
-  entities:
-    - camera.Timo
-    - sensor.yr_symbol
-    - sensor.dark_sky_summary
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_apparent_temperature
-    - sensor.dark_sky_daily_high_temperature
-    - sensor.dark_sky_daily_low_temperature
-    - sensor.dark_sky_humidity
-    - sensor.dark_sky_wind_speed
-    - sensor.dark_sky_cloud_coverage
-    - sensor.dark_sky_minutely_summary
-    - sensor.dark_sky_hourly_summary
-    - sensor.dark_sky_daily_summary
-    - sensor.dark_sky_uv_index
-
-Weerfront:
-  name: Weer
-  entities:
-  - input_text.dummy_tiles_information
-
-# trashsensors:
-#   name: ' '
-#   control: hidden
-#   icon: mdi:delete
-#   entities:
-#     - sensor.trash_today
-#     - sensor.trash_tomorrow
-#     - sensor.trash_dayaftertomorrow
-
 alllights:
   name: 'All Lights'
   view: no
@@ -225,15 +123,3 @@ afvalinzameling:
   - input_text.dummy_tiles_afval
   - input_text.dummy_toggle_lights
 
-CatFlap:
-        name: Sure Cat Flap Status
-        entities:
-            - binary_sensor.hub_status
-            - binary_sensor.flap_status
-            - sensor.loki_status
-            - binary_sensor.lock_status
-            - sensor.flap_battery_status
-            - sensor.loki_trips_outside_today
-            - sensor.loki_trips_outside_yesterday
-            - sensor.loki_outside_time_today
-            - sensor.loki_outside_yesterday

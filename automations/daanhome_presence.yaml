@@ -31,8 +31,8 @@
       entity_id: device_tracker.24181d5538ee #Phone Router
       to: 'home'       
   action:
-    - service: homeassistant.turn_on
-      entity_id: input_boolean.daniellehome
+    # - service: homeassistant.turn_on
+    #   entity_id: input_boolean.daniellehome
     - delay: 00:01:00
     - service: script.sonos_say
       data:

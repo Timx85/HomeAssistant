@@ -171,7 +171,6 @@ homeassistant:
           - entity: sensor.dark_sky_hourly_summary
             label_template: "return entities['sensor.dark_sky_hourly_summary'].state;"
             #icon_template: "return entities['sensor.dark_sky_template'].state;"
-            label_sec_template: "return 'MIN ' + parseInt(entities['sensor.dark_sky_daily_low_temperature'].state) + 'Cº tot MAX ' + parseInt(entities['sensor.dark_sky_daily_high_temperature'].state) + 'Cº'"
             column: 1
             column_span: 8
             row: 3   
@@ -447,8 +446,6 @@ homeassistant:
 
           - entity: sensor.br_symbol
             label_template: "return entities['sensor.br_symbol'].state;"
-            #icon_template: "return entities['sensor.dark_sky_template'].state;"
-            label_sec_template: "if (entities['sensor.br_precipitation_forecast_total'].state === '0.0') return 'MIN ' + parseInt(entities['sensor.dark_sky_daily_low_temperature'].state) + 'Cº tot MAX ' + parseInt(entities['sensor.dark_sky_daily_high_temperature'].state) + 'Cº EN GEEN REGEN'; else return 'MIN ' + parseInt(entities['sensor.dark_sky_daily_low_temperature'].state) + 'Cº tot MAX ' + parseInt(entities['sensor.dark_sky_daily_high_temperature'].state) + 'Cº EN ' + parseInt(entities['sensor.br_precipitation_forecast_total'].state) + ' MM/H AAN REGEN '"
             column: 2
             column_span: 7
             row: 2   

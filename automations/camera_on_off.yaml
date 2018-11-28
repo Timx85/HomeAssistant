@@ -12,9 +12,7 @@
       after: '06:00:00'
       before: '22:45:00'
   action:
-    - service: camera.turn_off
-      data:
-        entity_id: camera.woonkamer1
+    - service: script.foscam_off
 
 - alias: 'livingroom_camera_on'
   trigger:
@@ -24,9 +22,7 @@
       #entity_id: group.family  
       #to: 'not_home'
   action:
-    - service: camera.turn_on
-      data:
-        entity_id: camera.woonkamer1
+    - service: script.foscam_on
 
 - alias: 'livingroom_camera_on_night'
   trigger:
@@ -35,17 +31,13 @@
       #entity_id: group.family  
       #to: 'not_home'
   action:
-    - service: camera.turn_on
-      data:
-        entity_id: camera.woonkamer1
+    - service: script.foscam_on
 
 - alias: 'livingroom_camera_off_morning'
   trigger:
     - platform: time
-      at: '06:00:00'
+      at: '05:50:00'
       #entity_id: group.family  
       #to: 'not_home'
   action:
-    - service: camera.turn_off
-      data:
-        entity_id: camera.woonkamer1
+    - service: script.foscam_off
