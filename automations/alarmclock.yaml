@@ -1,5 +1,6 @@
 - id: kitchenonwhenalarmgoes
   alias: Kitchenlightonwithalarm
+  initial_state: 'on'
   trigger:
   - platform: template
     value_template: '{{ states.sensor.time.state == states.sensor.alarm_clock_time_long.state }}'

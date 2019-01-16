@@ -44,14 +44,15 @@ woonkamer:
  name: Woonkamer
  control: hidden
  entities:
-  - switch.switch
-  - switch.switch_2
+  - switch.everspring_an180_plugin_onoff_module_switch
+  - switch.everspring_an180_plugin_onoff_module_switch_2
+  - switch.everspring_an180_plugin_onoff_module_switch_3
 
 Keuken:
  name: Keuken
  control: hidden
  entities:
-  - light.level
+  - light.fibaro_system_fgd212_dimmer_2_level
 
 Family:
   name: Device Tracker

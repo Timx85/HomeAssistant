@@ -1,5 +1,6 @@
 - id: TurnLightsOnLuxLow
   alias: TurnLightsOnLuxLow
+  initial_state: 'on'
   trigger:
   - platform: numeric_state 
     entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
@@ -31,6 +32,7 @@
 
 - id: TurnLightsOffLuxHigh
   alias: TurnLightsOffLuxHigh
+  initial_state: 'on'
   trigger:
   - platform: numeric_state 
     entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance

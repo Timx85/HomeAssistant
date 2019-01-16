@@ -1,4 +1,5 @@
 - alias: 'Daan Away'
+  initial_state: 'on'
   condition:
     condition: state
     entity_id: input_boolean.daniellehome
@@ -19,16 +20,17 @@
       entity_id: input_boolean.daniellehome
 
 - alias: 'Daan Home'
+  initial_state: 'on'
   condition:
     condition: state
     entity_id: input_boolean.daniellehome
     state: 'off'
   trigger:
     - platform: state
-      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+      entity_id: device_tracker.24181d5538ee #Phone Router
       to: 'home' 
     - platform: state
-      entity_id: device_tracker.24181d5538ee #Phone Router
+      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
       to: 'home'       
   action:
     # - service: homeassistant.turn_on
@@ -42,25 +44,26 @@
         message: 'Welcome home Danielle!'
 
 - alias: 'HallwayonWhenDaanHome'
+  initial_state: 'on'
   trigger:
-    - platform: state
-      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
-      to: 'home' 
     - platform: state
       entity_id: device_tracker.24181d5538ee #Phone Router
       to: 'home' 
+    - platform: state
+      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+      to: 'home' 
   condition:
     - condition: state
-      entity_id: input_boolean.daanhome
+      entity_id: input_boolean.daniellehome
       state: 'off' 
   action:
     - service: homeassistant.turn_on
-      entity_id: input_boolean.daanhome
+      entity_id: input_boolean.daniellehome
     - condition: state
       entity_id: sun.sun
       state: "below_horizon"  
     - service: light.turn_on
-      entity_id: light.level_3
+      entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level
       data:
         brightness: 3
     - service: switch.turn_on
@@ -69,4 +72,4 @@
       entity_id: group.keuken
     - delay: 00:03:00
     - service: light.turn_off
-      entity_id: light.level_
+      entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level

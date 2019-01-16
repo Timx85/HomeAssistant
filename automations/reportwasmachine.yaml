@@ -1,4 +1,5 @@
 - alias: 'Wasmachine Started'
+  initial_state: 'on'
   condition:
     condition: state
     entity_id: input_boolean.statuswasmachine
@@ -14,6 +15,7 @@
       entity_id: input_boolean.statuswasmachine
 
 - alias: 'Wasmachine Finished'
+  initial_state: 'on'
   condition:
     condition: state
     entity_id: input_boolean.statuswasmachine

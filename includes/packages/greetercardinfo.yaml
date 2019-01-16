@@ -4,3 +4,15 @@ sensor:
       greeter_card_info:
         value_template: >
           Next Event: {{ as_timestamp(states.calendar.danielletimodewitgmailcom.attributes.start_time) | timestamp_custom('%Y/%m/%d at %H:%M') }} - {{ states.calendar.danielletimodewitgmailcom.attributes.message }}
+  
+  - platform: template
+    sensors:
+      greeter_card_info_date:
+        value_template: >
+          Date: {{ as_timestamp(states.calendar.danielletimodewitgmailcom.attributes.start_time) | timestamp_custom('%Y/%m/%d at %H:%M') }}
+    
+  - platform: template
+    sensors:
+      greeter_card_info_time:
+        value_template: >
+          Event: {{ states.calendar.danielletimodewitgmailcom.attributes.message }}

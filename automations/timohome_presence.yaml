@@ -1,4 +1,5 @@
 - alias: 'Timo Away'
+  initial_state: 'on'
   condition:
     condition: state
     entity_id: input_boolean.timohome
@@ -19,6 +20,7 @@
       entity_id: input_boolean.timohome
 
 - alias: 'Timo Home'
+  initial_state: 'on'
   condition:
     condition: state
     entity_id: input_boolean.timohome
@@ -42,6 +44,7 @@
         message: 'Welcome home Timo!'
 
 - alias: 'HallwayonWhenTimoHome'
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
@@ -60,7 +63,7 @@
       entity_id: sun.sun
       state: "below_horizon"  
     - service: light.turn_on
-      entity_id: light.level_3
+      entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level
       data:
         brightness: 3
     - service: switch.turn_on
@@ -69,6 +72,6 @@
       entity_id: group.keuken
     - delay: 00:03:00
     - service: light.turn_off
-      entity_id: light.level_3
+      entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level
 
   

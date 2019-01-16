@@ -1,5 +1,6 @@
 
 - alias: 'Unexpected motion'
+  initial_state: 'on'
   condition:
     condition: and
     conditions:
@@ -37,14 +38,13 @@
         file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
 
 - alias: 'guest motion'
+  initial_state: 'on'
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: input_boolean.timohome
-        state: 'off'
-        # entity_id: group.family
-        # state: not_home
+        entity_id: group.family
+        state: 'not_home'
       - condition: state
         entity_id: input_boolean.guestmode
         state: 'on'
@@ -74,12 +74,13 @@
         file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
 
 - alias: 'Bedtime motion'
+  initial_state: 'on'
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: input_boolean.timohome
-        state: 'on'
+        entity_id: group.family
+        state: 'not_home'
       - condition: state
         entity_id: input_boolean.guestmode
         state: 'off'

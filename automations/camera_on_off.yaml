@@ -1,6 +1,7 @@
 # TURNING FOSCAM C2 ON OFF BASED ON PRESENCE
 
 - alias: 'livingroom_camera_off'
+  initial_state: 'on'  
   trigger:
     - platform: state
       entity_id: input_boolean.timohome 
@@ -15,6 +16,7 @@
     - service: script.foscam_off
 
 - alias: 'livingroom_camera_on'
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: input_boolean.timohome 
@@ -25,6 +27,7 @@
     - service: script.foscam_on
 
 - alias: 'livingroom_camera_on_night'
+  initial_state: 'on'
   trigger:
     - platform: time
       at: '23:00:00'
@@ -34,6 +37,7 @@
     - service: script.foscam_on
 
 - alias: 'livingroom_camera_off_morning'
+  initial_state: 'on'
   trigger:
     - platform: time
       at: '05:50:00'
