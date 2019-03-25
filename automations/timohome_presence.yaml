@@ -31,6 +31,9 @@
       to: 'home' 
     - platform: state
       entity_id: device_tracker.30074d51bc9a #Phone Router
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.galaxy_s8 #BT Timo
       to: 'home'   
   action:
     # - service: homeassistant.turn_on
@@ -48,7 +51,10 @@
   trigger:
     - platform: state
       entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
-      to: 'home' 
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.galaxy_s8 #BT Timo
+      to: 'home'  
     - platform: state
       entity_id: device_tracker.30074d51bc9a #Phone Router
       to: 'home' 
@@ -74,4 +80,27 @@
     - service: light.turn_off
       entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level
 
+- alias: 'Timo Home Router Test'
+  initial_state: 'on'
+  condition:
+    condition: state
+    entity_id: input_boolean.timohome
+    state: 'off'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.galaxy_s8 #BT Timo
+      to: 'home' 
+    - platform: state
+      entity_id: device_tracker.30074d51bc9a #Phone Router
+      to: 'home'   
+  action:
+    # - service: homeassistant.turn_on
+    #   entity_id: input_boolean.timohome
+    - delay: 00:01:00
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.keuken
+        volume: 0.2
+        delay: '00:00:04'
+        message: 'Welcome home Timo!'
   

@@ -27,5 +27,32 @@ script:
       - service: media_player.sonos_restore
         data_template:
           entity_id: "{{ sonos_entity|default('media_player.keuken') }}"
+  
+  tts_plant_info:
+    alias: Announce Plant Info
+    sequence:
+      - service: media_player.sonos_snapshot
+        data_template:
+          entity_id: "{{ sonos_entity|default('media_player.keuken') }}"
+      - service: tts.google_say
+        data_template:
+          entity_id: "{{ sonos_entity|default('media_player.keuken') }}"
+          message: >
+            {% if is_state_attr('sensor.plant_problems','water_number',0) %}
+            No plants need watering.
+            {% elif states.sensor.plant_problems.attributes.water_number | float > 0 %}
+            {{states.sensor.plant_problems.attributes.water}} need to be watered.
+            {% endif %}
+            {% if is_state_attr('sensor.plant_problems','fertilize_number',0) %}
+            No plants need fertilizer.
+            {% elif states.sensor.plant_problems.attributes.fertilize_number | float > 0 %}
+            These plants {{states.sensor.plant_problems.attributes.fertilize}} need fertilizing.
+            {% endif %}
+      - delay: "{{ delay|default('00:00:00') }}"
+      - wait_template: "{{ is_state(sonos_entity|default('media_player.keuken'), 'playing') }}"
+        timeout: '00:00:05'
+      - service: media_player.sonos_restore
+        data_template:
+          entity_id: "{{ sonos_entity|default('media_player.keuken') }}"
 
     

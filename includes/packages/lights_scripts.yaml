@@ -18,14 +18,11 @@ script:
           entity_id: group.woonkamer
         - service: light.turn_on
           entity_id: group.keuken
-    sonosmytest:
-      alias: sonons say test
+    
+    run_plant_info:
+      alias: Run plant info
       sequence:
-        - service: script.sonos_say
-          data:
-            sonos_entity: media_player.keuken
-            volume: 0.3
-            delay: '00:00:04'
-            message: 'Dryer is Done Timo!'
-            #data_template:  “Temperature is {{ states.sensor.now_temperature.state }}.”
+        - service: script.turn_on
+          entity_id: script.tts_plant_info
+
     

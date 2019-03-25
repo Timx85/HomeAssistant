@@ -1,0 +1,7 @@
+- id: UpdatePlantProblems
+  alias: 'Update Plant Problems'
+  trigger:
+    - platform: state
+      entity_id: plant.Spathiphyllum_Woonkamer, plant.Calathea_Hal, plant.Spathiphyllum_Kast
+  action:
+    - service: python_script.plant_problems
