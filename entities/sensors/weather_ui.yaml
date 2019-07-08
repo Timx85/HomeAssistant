@@ -1,0 +1,41 @@
+platform: template
+sensors:
+  br_day_forecaste1:
+    value_template: >
+      {{(as_timestamp(now())+ (86400)) | timestamp_custom("%a",true)}}
+
+  br_day_forecaste2:
+    value_template: >
+      {{(as_timestamp(now())+ (172800)) | timestamp_custom("%a",true)}}
+
+  br_day_forecaste3:
+    value_template: >
+      {{(as_timestamp(now())+ (259200)) | timestamp_custom("%a",true)}}
+  dark_sky_template:
+    value_template: >
+      {% if is_state('sensor.dark_sky_icon', 'clear-day') %}
+        mdi:weather-sunny
+      {% elif is_state('sensor.dark_sky_icon', 'clear-night') %}
+        mdi:weather-night
+      {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+        mdi:weather-rainy
+      {% elif is_state('sensor.dark_sky_icon', 'snow') %}
+        mdi:weather-snowy
+      {% elif is_state('sensor.dark_sky_icon', 'sleet') %}
+        mdi:weather-snowy-rainy
+      {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+        mdi:weather-windy-variant
+      {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+        mdi:weather-fog
+      {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+        mdi:weather-cloudy
+      {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-day') or is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+        mdi:weather-partlycloudy
+      {% elif is_state('sensor.dark_sky_icon', 'hail') %}
+        mdi:weather-hail
+      {% elif is_state('sensor.dark_sky_icon', 'thunderstorm') %}
+        mdi:weather-lightning
+      {% else %}
+        mdi:help-circle
+      {% endif %}
+      

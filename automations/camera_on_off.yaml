@@ -13,7 +13,9 @@
       after: '06:00:00'
       before: '22:45:00'
   action:
-    - service: script.foscam_off
+    - service: switch.turn_off
+      data:
+        entity_id: switch.foscam_motion
 
 - alias: 'livingroom_camera_on'
   initial_state: 'on'
@@ -24,24 +26,26 @@
       #entity_id: group.family  
       #to: 'not_home'
   action:
-    - service: script.foscam_on
+    - service: switch.turn_on
+      data:
+        entity_id: switch.foscam_motio
 
 - alias: 'livingroom_camera_on_night'
   initial_state: 'on'
   trigger:
     - platform: time
       at: '23:00:00'
-      #entity_id: group.family  
-      #to: 'not_home'
   action:
-    - service: script.foscam_on
+    - service: switch.turn_on
+      data:
+        entity_id: switch.foscam_motion
 
 - alias: 'livingroom_camera_off_morning'
   initial_state: 'on'
   trigger:
     - platform: time
       at: '05:50:00'
-      #entity_id: group.family  
-      #to: 'not_home'
   action:
-    - service: script.foscam_off
+    - service: switch.turn_off
+      data:
+        entity_id: switch.foscam_motion

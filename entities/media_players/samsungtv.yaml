@@ -1,0 +1,8 @@
+---
+# The samsungtv platform allows you to control an samsungtv TV device.
+# In this case, a samsungtv in our living room.
+#
+# https://www.home-assistant.io/components/androidtv/
+#
+platform: samsungtv
+host: 192.168.0.10

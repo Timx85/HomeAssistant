@@ -1,0 +1,20 @@
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+secrets.yaml
+known_devices.yaml
+google_calendars.yaml
+home-assistant.db
+home-assistant_v2.db
+home-assistant_v2.db-*
+.uuid
+
+# Log files
+home-assistant.log
+ozw_log.txt
+
+# Ignore folders.
+.storage
+.cloud
+.google.token
+tts
+www/logo/
+www/cam_captures/

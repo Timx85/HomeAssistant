@@ -1,0 +1,12 @@
+---
+#
+# Defines the Home Zone
+#
+# https://www.home-assistant.io/components/zone/
+#
+
+# This will override the default home zone
+name: "Home"
+latitude: 52.292183
+longitude: 5.280680
+radius: 100

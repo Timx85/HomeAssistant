@@ -6,15 +6,20 @@
     state: 'on'
   trigger:
     - platform: state
-      entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+      entity_id: person.timo
       to: 'not_home' 
       for:
         minutes: 3
-    - platform: state
-      entity_id: device_tracker.30074d51bc9a #Phone Router
-      to: 'not_home' 
-      for:
-        minutes: 3
+    # - platform: state
+    #   entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+    #   to: 'not_home' 
+    #   for:
+    #     minutes: 3
+    # - platform: state
+    #   entity_id: device_tracker.30074d51bc9a #Phone Router
+    #   to: 'not_home' 
+    #   for:
+    #     minutes: 3
   action:
     - service: homeassistant.turn_off
       entity_id: input_boolean.timohome
@@ -27,14 +32,17 @@
     state: 'off'
   trigger:
     - platform: state
-      entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+      entity_id: person.timo
       to: 'home' 
-    - platform: state
-      entity_id: device_tracker.30074d51bc9a #Phone Router
-      to: 'home'
-    - platform: state
-      entity_id: device_tracker.galaxy_s8 #BT Timo
-      to: 'home'   
+    # - platform: state
+    #   entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+    #   to: 'home' 
+    # - platform: state
+    #   entity_id: device_tracker.30074d51bc9a #Phone Router
+    #   to: 'home'
+    # - platform: state
+    #   entity_id: device_tracker.galaxy_s8 #BT Timo
+    #   to: 'home'   
   action:
     # - service: homeassistant.turn_on
     #   entity_id: input_boolean.timohome
@@ -44,20 +52,23 @@
         sonos_entity: media_player.keuken
         volume: 0.2
         delay: '00:00:04'
-        message: 'Welcome home Timo!'
+        message: 'Welkom thuis Timo!'
 
 - alias: 'HallwayonWhenTimoHome'
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+      entity_id: person.timo
       to: 'home'
-    - platform: state
-      entity_id: device_tracker.galaxy_s8 #BT Timo
-      to: 'home'  
-    - platform: state
-      entity_id: device_tracker.30074d51bc9a #Phone Router
-      to: 'home' 
+    # - platform: state
+    #   entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
+    #   to: 'home'
+    # - platform: state
+    #   entity_id: device_tracker.galaxy_s8 #BT Timo
+    #   to: 'home'  
+    # - platform: state
+    #   entity_id: device_tracker.30074d51bc9a #Phone Router
+    #   to: 'home' 
   condition:
     - condition: state
       entity_id: input_boolean.timohome
@@ -80,27 +91,26 @@
     - service: light.turn_off
       entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level
 
-- alias: 'Timo Home Router Test'
+
+####################################
+#### NOTIFY ###
+
+- id: NotifyTimoHome
+  alias: NotifyTimoHome
   initial_state: 'on'
-  condition:
-    condition: state
-    entity_id: input_boolean.timohome
-    state: 'off'
   trigger:
-    - platform: state
-      entity_id: device_tracker.galaxy_s8 #BT Timo
-      to: 'home' 
-    - platform: state
-      entity_id: device_tracker.30074d51bc9a #Phone Router
-      to: 'home'   
+  - platform: zone
+    event: enter
+    zone: zone.Home
+    entity_id: person.timo
+    # Optional
+    #from: 'away'
+    # Optional
+    #to: 'Home'
   action:
-    # - service: homeassistant.turn_on
-    #   entity_id: input_boolean.timohome
-    - delay: 00:01:00
-    - service: script.sonos_say
-      data:
-        sonos_entity: media_player.keuken
-        volume: 0.2
-        delay: '00:00:04'
-        message: 'Welcome home Timo!'
-  
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'Timo is Home'
+        disable_notification: false 

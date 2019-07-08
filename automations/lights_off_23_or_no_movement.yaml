@@ -1,0 +1,81 @@
+- id: TurnLightsOoffAfter2300
+  alias: TurnLightsOoffAfter2300
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '23:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar            
+            state: '254'
+            for:
+              minutes: 90
+          - condition: state
+            entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+            state: '0'
+            for:
+              minutes: 90
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: group.woonkamer
+            state: 'on'
+          - condition: state
+            entity_id: group.keuken
+            state: 'on'
+  action:
+  - data:
+      entity_id: group.woonkamer
+    entity_id: group.woonkamer
+    service: switch.turn_off
+  - data:
+      entity_id: group.keuken
+    entity_id: group.keuken
+    service: light.turn_off
+  - service: telegram_bot.send_message
+    data_template:
+      target: !secret telegram_Timo_id
+      message: 'Lichten vergeten vannacht om 23:00 uur'
+      disable_notification: false
+
+- id: TurnLightsOoffAfterNoMovement
+  alias: TurnLightsOoffAfterNoMovement
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+      to: '0'
+      for:
+        minutes: 90
+  condition:
+    condition: and
+    conditions: 
+      - condition: time
+        after: '23:00:00'
+        before: '06:00:00'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: group.woonkamer
+            state: 'on'
+          - condition: state
+            entity_id: group.keuken
+            state: 'on'
+  action:
+  - data:
+      entity_id: group.woonkamer
+    entity_id: group.woonkamer
+    service: switch.turn_off
+  - data:
+      entity_id: group.keuken
+    entity_id: group.keuken
+    service: light.turn_off
+  - service: telegram_bot.send_message
+    data_template:
+      target: !secret telegram_Timo_id
+      message: 'Lichten vergeten vannacht na 23:00 NoMovement'
+      disable_notification: false

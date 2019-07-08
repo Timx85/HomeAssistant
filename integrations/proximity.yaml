@@ -1,0 +1,9 @@
+proximity:
+  home: 
+    ignored_zones:
+      - work
+    devices:
+      - device_tracker.life360_danielle
+      - device_tracker.life360_danielle_werk
+    tolerance: 50
+    unit_of_measurement: m

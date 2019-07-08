@@ -1,0 +1,14 @@
+platform: template
+sensors:
+  time_of_day:
+    value_template: >
+      {% set current_hour = strptime(states('sensor.time'), "%H:%M").hour %}
+      {% if current_hour < 12 %}
+        Good Morning
+      {% elif 12 <= current_hour < 18 %}
+        Good Afternoon
+      {% elif 18 <= current_hour < 23 %}
+        Good Evening
+      {% else %}
+        Good Night
+      {% endif %}

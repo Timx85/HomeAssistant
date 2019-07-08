@@ -1,0 +1,11 @@
+############################################################
+#
+# Turn all lights off with 1 switch
+#
+############################################################
+run_plant_info:
+  alias: Run plant info
+  sequence:
+    - service: script.turn_on
+      entity_id: script.tts_plant_info
+    

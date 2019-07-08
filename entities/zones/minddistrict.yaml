@@ -1,0 +1,10 @@
+---
+#
+# Defines the Home Zone
+#
+# https://www.home-assistant.io/components/zone/
+#
+name: "Minddistrict"
+latitude: 52.3694864
+longitude: 4.835701599999993
+radius: 100   

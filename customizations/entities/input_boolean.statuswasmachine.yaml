@@ -1,0 +1,12 @@
+input_boolean.statuswasmachine:
+  friendly_name: 'statuswasmachine'
+  icon: mdi:washing-machine
+  templates:
+    hs_color: >
+      if (state === 'on') {
+        return [60,100];
+      } else if (state === 'off' ) {
+        return [60, 0];
+      } else {
+        return rgb(35, 76, 99);
+      }

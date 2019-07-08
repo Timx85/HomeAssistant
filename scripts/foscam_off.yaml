@@ -1,0 +1,6 @@
+foscam_off:
+  sequence:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.foscam_motion
+  - service: shell_command.foscam_turn_off

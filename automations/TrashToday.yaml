@@ -1,0 +1,21 @@
+- id: TrashToday
+  alias: 'Notify of which container will be pickedup today'
+  initial_state: true
+  trigger:
+    platform: time
+    at: '06:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.notify_trash
+      state: 'on'
+    - condition: template
+      value_template: "{{ states('sensor.trash_today') != 'Geen' }}"
+    - condition: template
+      value_template: "{{ states.sensor.trash_today.state | trim != '' }}"
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        title: 'Afvalinzameling'
+        target: !secret telegram_Timo_id
+        message: 'Vandaag kan de {{ states.sensor.trash_today.state }} container aan de straat.'
+        disable_notification: false

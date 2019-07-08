@@ -1,0 +1,4 @@
+alarm_clock_status:
+  name: alarm_clock_status
+  initial: on
+  icon: mdi:alarm-check

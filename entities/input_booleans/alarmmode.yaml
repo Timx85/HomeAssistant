@@ -1,0 +1,4 @@
+alarmmode:
+  name: Alarm Mode
+  initial: off
+  icon: mdi:cctv

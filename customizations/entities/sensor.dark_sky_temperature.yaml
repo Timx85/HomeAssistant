@@ -1,0 +1,3 @@
+sensor.dark_sky_temperature:
+  friendly_name: Temperatuur
+  icon: mdi:temperature-celsius

@@ -1,0 +1,11 @@
+platform: rest
+name: FoscamMotionDetectionStatus
+resource: http://192.168.2.16:88/cgi-bin/CGIProxy.fcgi?cmd=getMotionDetectConfig1&usr=WoonkamerCamera11&pwd=WCamera11
+#device_class: motion
+scan_interval: 5
+value_template: >-
+  {%- if "<isEnable>1</isEnable>" in value -%}
+    Enabled
+  {%- else -%}
+    Disabled
+  {%- endif -%}

@@ -1,0 +1,8 @@
+# Text-to-Speech (TTS) enables Home Assistant to speak to you.
+# This loads up my TTS service configurations
+#
+# https://www.home-assistant.io/components/tts/
+#
+google:
+  client_id: !secret google_calander_secret
+  client_secret: !secret google_calander_client_secret

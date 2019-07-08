@@ -1,0 +1,5 @@
+- platform: ping
+  interval_seconds: 60
+  hosts:
+    Timo_ping: 192.168.2.2
+    Daan_ping: 192.168.2.3

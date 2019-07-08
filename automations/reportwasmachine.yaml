@@ -31,7 +31,7 @@
       data_template:
         #title: 'Presence detection'
         target: !secret telegram_Timo_id
-        message: 'Wasmachine is finished Timo!'
+        message: 'Wasmachine is klaar Timo!'
         disable_notification: false
     - service: homeassistant.turn_off
       entity_id: input_boolean.statuswasmachine 
@@ -41,4 +41,4 @@
         sonos_entity: media_player.keuken
         volume: 0.2
         delay: '00:00:04'
-        message: 'Wasmachine is finished Danielle!'
+        message: 'Wasmachine is klaar Danielle!'

@@ -1,0 +1,12 @@
+Family:
+  name: Device Tracker
+  entities:
+  - device_tracker.ce0417142b50872202_2 #Timo GPS
+  - device_tracker.ce11171b6d4c1f1b04_2 #Daan GPS
+  - device_tracker.30074d51bc9a #T Router
+  - device_tracker.galaxy_s8 #T. BT
+  - device_tracker.timo_s8_2 #OwnTracks
+  - device_tracker.24181d5538ee #D. Router
+  - device_tracker.timo_ping
+  - device_tracker.danielle_s8werk_2
+  - device_tracker.daan_ping

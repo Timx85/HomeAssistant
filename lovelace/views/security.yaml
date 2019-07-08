@@ -1,0 +1,108 @@
+title: Security
+icon: mdi:cctv
+cards:
+  - type: entities
+    entities:
+      - sensor.alarm_clock_time
+      - input_number.alarm_clock_hour
+      - input_number.alarm_clock_minute
+      - input_boolean.alarm_clock_status
+
+  - type: picture-glance
+    title: Woonkamer
+    entities:
+      - entity: switch.everspring_an180_plug_in_on_off_module_switch_2
+        icon: mdi:lightbulb-on-outline
+      - entity: switch.everspring_an180_plug_in_on_off_module_switch_3
+        icon: mdi:lightbulb-on-outline
+    camera_image: camera.woonkamer1
+
+  - type: entities
+    # Title of the entities card
+    title: Example
+    # The entities here will be shown in the same order as specified.
+    # Each entry is an entity ID or a map with extra options.
+    entities:
+      - sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
+      - sensor.foscammotionsensor
+      - script.foscam_on
+      - script.foscam_off
+
+  - type: picture-glance
+    image: /local/cam_captures/LastMotion.jpg
+    name: Last Motion
+    entities:
+      - sensor.foscammotionsensor
+
+  - id: a8d7e47eb0ab4ed78b8db6c18bcf28a4  # Automatically created id
+    type: history-graph
+    hours_to_show: 48
+    refresh_interval: 3600
+    entities:
+      - entity: sensor.foscammotionsensor
+      - entity: sensor.FoscamMotionDetectionStatus
+
+  - type: horizontal-stack
+    cards:
+      - type: custom:dark-sky-weather-card
+        entity_sun: sun.sun
+        entity_current_conditions: sensor.dark_sky_icon
+        entity_humidity: sensor.dark_sky_humidity
+        entity_pressure: sensor.dark_sky_pressure
+        entity_temperature: sensor.dark_sky_temperature
+        entity_visibility: sensor.dark_sky_visibility
+        entity_wind_bearing: sensor.dark_sky_wind_bearing
+        entity_wind_speed: sensor.dark_sky_wind_speed
+        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
+        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
+        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
+        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
+        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
+        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
+        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
+        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
+        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
+        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
+        entity_forecast_icon_1: sensor.dark_sky_icon_1
+        entity_forecast_icon_2: sensor.dark_sky_icon_2
+        entity_forecast_icon_3: sensor.dark_sky_icon_3
+        entity_forecast_icon_4: sensor.dark_sky_icon_4
+        entity_forecast_icon_5: sensor.dark_sky_icon_5
+        entity_daily_summary: sensor.dark_sky_daily_summary
+
+  - type: horizontal-stack
+    cards:
+      - type: iframe
+        url: https://api.buienradar.nl/image/1.0/RadarMapNL?w=240&h=250"
+        aspect_ratio: 100%
+      - type: iframe
+        url: https://gadgets.buienradar.nl/gadget/zoommap/?lat=52.29917&lng=5.24167&overname=2&zoom=8&naam=1273&size=2&voor=1
+        aspect_ratio: 110%
+
+  - type: custom:swipe-card
+    card_width: 185px
+    start_card: 2
+    parameters:
+      effect: coverflow
+      grabCursor: true
+      centeredSlides: true
+      slidesPerView: auto
+      coverflowEffect:
+        rotate: 50
+        stretch: 0
+        depth: 100
+        modifier: 1
+        slideShadows: true
+      pagination:
+        type: bullets
+    cards:
+      - type: sensor
+        entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
+        name: Luminance
+        line_width: 8
+        line_color: '#FF6384'
+      - type: sensor
+        entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_temperature
+        name: Temperature
+        line_color: '#36A2EB'
+        line_width: 8

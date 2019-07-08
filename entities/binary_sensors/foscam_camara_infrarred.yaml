@@ -1,0 +1,7 @@
+platform: command_line
+# Command used to get infrared status for a foscam camera:
+# 'curl -k --silent "https://<cam_host>:<cam_port>/cgi-bin/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=<username>&pwd=<password>" | grep -oP "(?<=infraLedState>).*?(?=</infraLedState>)"'
+command: !secret cam_foscam_infrared_command
+name: foscam_camara_infrarred
+payload_on: '1'
+payload_off: '0'

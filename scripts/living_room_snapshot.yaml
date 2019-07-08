@@ -1,0 +1,21 @@
+living_room_snapshot:
+  alias: 'Living Room Snapshot'
+  sequence:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+    - service: camera.snapshot
+      data:
+        entity_id: camera.woonkamer1
+        filename: "/config/www/cam_captures/LastMotion.jpg"
+    - delay:
+        seconds: 5
+    - service: telegram_bot.send_message
+      data_template:
+        target: !secret telegram_Timo_id
+        message: 'The alarm was triggered'
+    - service: telegram_bot.send_photo  
+      data:
+        target: !secret telegram_Timo_id
+        file: "/config/www/cam_captures/woonkamer_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"

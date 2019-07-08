@@ -1,0 +1,5 @@
+platform: template
+sensors:
+  greeter_card_info_time:
+    value_template: >
+      Event: {{ states.calendar.danielletimodewitgmailcom.attributes.message }}

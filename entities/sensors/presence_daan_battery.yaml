@@ -1,0 +1,4 @@
+platform: template
+sensors:
+  presence_daan_battery:
+    value_template: '{{ states.device_tracker.life360_danielle.attributes.battery|default(0) }}'

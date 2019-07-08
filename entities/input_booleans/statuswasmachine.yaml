@@ -1,0 +1,4 @@
+statuswasmachine:
+  name: Wasmachine Status
+  initial: off
+  icon: mdi:washing-machine

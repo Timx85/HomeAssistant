@@ -1,5 +1,6 @@
 - id: UpdatePlantProblems
   alias: 'Update Plant Problems'
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: plant.Spathiphyllum_Woonkamer, plant.Calathea_Hal, plant.Spathiphyllum_Kast

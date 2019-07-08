@@ -1,0 +1,7 @@
+woonkamer:
+ name: Woonkamer
+ control: hidden
+ entities:
+  - switch.everspring_an180_plug_in_on_off_module_switch
+  - switch.everspring_an180_plug_in_on_off_module_switch_2
+  - switch.everspring_an180_plug_in_on_off_module_switch_3

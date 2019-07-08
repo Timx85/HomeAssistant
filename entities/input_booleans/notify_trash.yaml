@@ -1,0 +1,3 @@
+notify_trash:
+  name: notify_trash
+  initial: on

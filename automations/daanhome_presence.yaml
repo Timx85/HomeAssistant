@@ -6,15 +6,20 @@
     state: 'on'
   trigger:
     - platform: state
-      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+      entity_id: person.danielle
       to: 'not_home' 
       for:
         minutes: 3
-    - platform: state
-      entity_id: device_tracker.24181d5538ee #Phone Router
-      to: 'not_home' 
-      for:
-        minutes: 3
+    # - platform: state
+    #   entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+    #   to: 'not_home' 
+    #   for:
+    #     minutes: 3
+    # - platform: state
+    #   entity_id: device_tracker.24181d5538ee #Phone Router
+    #   to: 'not_home' 
+    #   for:
+    #     minutes: 3
   action:
     - service: homeassistant.turn_off
       entity_id: input_boolean.daniellehome
@@ -27,11 +32,14 @@
     state: 'off'
   trigger:
     - platform: state
-      entity_id: device_tracker.24181d5538ee #Phone Router
-      to: 'home' 
-    - platform: state
-      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
-      to: 'home'       
+      entity_id: person.danielle
+      to: 'home'
+    # - platform: state
+    #   entity_id: device_tracker.24181d5538ee #Phone Router
+    #   to: 'home' 
+    # - platform: state
+    #   entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+    #   to: 'home'       
   action:
     # - service: homeassistant.turn_on
     #   entity_id: input_boolean.daniellehome
@@ -41,17 +49,20 @@
         sonos_entity: media_player.keuken
         volume: 0.2
         delay: '00:00:04'
-        message: 'Welcome home Danielle!'
+        message: 'Welkom thuis Danielle!'
 
 - alias: 'HallwayonWhenDaanHome'
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: device_tracker.24181d5538ee #Phone Router
+      entity_id: person.danielle
       to: 'home' 
-    - platform: state
-      entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
-      to: 'home' 
+    # - platform: state
+    #   entity_id: device_tracker.24181d5538ee #Phone Router
+    #   to: 'home' 
+    # - platform: state
+    #   entity_id: device_tracker.ce11171b6d4c1f1b04 #GPSLOGGER
+    #   to: 'home' 
   condition:
     - condition: state
       entity_id: input_boolean.daniellehome
@@ -73,3 +84,79 @@
     - delay: 00:03:00
     - service: light.turn_off
       entity_id: light.domitech_smart_led_retrofit_kit_ze27eu_level
+
+####################################
+#### NOTIFY ###
+
+- id: 'NotifyTimoDaanHome'
+  alias: Danielle Home
+  initial_state: 'on'
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.Home
+    entity_id: person.danielle
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'Danielle is Home'
+        disable_notification: false
+
+
+- id: NotifyDaanAwayFromPaard
+  alias: NotifyDaanAwayFromPaard
+  initial_state: 'on'
+  trigger:
+  - platform: zone
+    entity_id: person.danielle
+    # Optional
+    zone: zone.Manege
+    event: leave
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'Daan is leaving the Manege'
+        disable_notification: false  
+
+- id: NotifyDaanAwayFromWork
+  alias: NotifyDaanAwayFromWork
+  initial_state: 'on'
+  trigger:
+  - platform: zone
+    entity_id: person.danielle
+    # Optional
+    zone: zone.minddistrict
+    event: leave
+    #from: 'Minddistrict'
+    #to: 'not_home'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'Daan is leaving Minddistrict'
+        disable_notification: false  
+
+- id: DaanCommingHome
+  alias: DaanCommingHome
+  initial_state: 'on'
+  trigger:
+  - platform: numeric_state
+    entity_id: proximity.home
+    below: 2500
+  condition:
+    condition: and
+    conditions:
+      - condition: template
+        value_template: '{{ states.proximity.home.attributes.dir_of_travel == "towards"  }}'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        #title: 'Presence detection'
+        target: !secret telegram_Timo_id
+        message: 'Daan is comming Home'
+        disable_notification: false   

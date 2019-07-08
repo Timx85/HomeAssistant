@@ -1,0 +1,6 @@
+---
+platform: foscam
+ip: !secret foscam_host
+username: !secret foscam_user
+password: !secret foscam_password
+name: Woonkamer1

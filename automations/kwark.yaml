@@ -11,3 +11,17 @@
         target: !secret telegram_Timo_id
         message: 'Kwark'
         disable_notification: false
+
+- id: '1562261453870'
+  alias: A_BOT
+  trigger:
+  - event_data:
+      command: /hallo
+    event_type: telegram_command
+    platform: event
+  condition: []
+  action:
+  - data:
+      message: "Batterij {{ states.device_tracker.ce0417142b50872202_2.attributes.battery_level|default(0) }} \n
+      {{ states('device_tracker.ce0417142b50872202_2') }}"
+    service: telegram_bot.send_message

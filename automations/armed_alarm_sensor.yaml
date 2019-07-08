@@ -14,7 +14,7 @@
         state: 'off'
   trigger:
     - platform: state 
-      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar  
+      entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar  
       to: '8'
   action:
     - service: camera.snapshot
@@ -50,7 +50,7 @@
         state: 'on'
   trigger:
     - platform: state 
-      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar  
+      entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar  
       to: '8'
   action:
     - service: camera.snapshot
@@ -89,7 +89,7 @@
         before: '06:00:00'
   trigger:
     - platform: state 
-      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar  
+      entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar  
       to: '8'
   action:
     - service: camera.snapshot

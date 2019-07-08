@@ -1,0 +1,5 @@
+platform: google_travel_time
+name: Daan To Home
+api_key: !secret google_travel_api_key
+origin: device_tracker.life360_danielle
+destination: zone.home

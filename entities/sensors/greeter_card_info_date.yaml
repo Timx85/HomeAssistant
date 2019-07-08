@@ -1,0 +1,5 @@
+platform: template
+sensors:
+  greeter_card_info_date:
+    value_template: >
+      Date: {{ as_timestamp(states.calendar.danielletimodewitgmailcom.attributes.start_time) | timestamp_custom('%Y/%m/%d at %H:%M') }}

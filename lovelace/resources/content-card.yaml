@@ -1,0 +1,3 @@
+---
+- url: /local/lovelace/content-card-example.js?v=5.5
+  type: js

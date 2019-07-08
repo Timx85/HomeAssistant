@@ -1,0 +1,20 @@
+- id: TurnLightsOn
+  alias: TurnLightsOn
+  initial_state: 'on'
+  trigger:
+  - event: sunset
+    offset: '-0:30:00'
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+  - data:
+      entity_id: group.woonkamer
+    entity_id: group.woonkamer
+    service: switch.turn_on
+  - data:
+      entity_id: group.keuken
+    entity_id: group.keuken
+    service: light.turn_on

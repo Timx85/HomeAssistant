@@ -1,0 +1,9 @@
+platform: template
+sensors:
+  presence_daan_time:
+    value_template: >
+      {% if is_state('person.danielle', 'home') %}
+        -
+      {% else %}
+        {{ states('sensor.daan2home') + ' MIN' }}
+      {% endif %}

@@ -1,0 +1,5 @@
+platform: waze_travel_time
+name: Time Home to work
+origin: zone.home
+destination: zone.work
+region: 'EU'

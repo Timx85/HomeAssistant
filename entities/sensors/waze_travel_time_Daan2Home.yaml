@@ -1,0 +1,5 @@
+platform: waze_travel_time
+name: Daan2Home
+origin: device_tracker.life360_danielle
+destination: zone.home
+region: 'EU'

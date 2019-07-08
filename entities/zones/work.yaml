@@ -1,0 +1,11 @@
+---
+#
+# Defines the Home Zone
+#
+# https://www.home-assistant.io/components/zone/
+#
+
+name: "Work"
+latitude: 52.091017
+longitude: 4.368556
+radius: 100

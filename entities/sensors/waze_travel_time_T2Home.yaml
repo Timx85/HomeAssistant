@@ -1,0 +1,5 @@
+platform: waze_travel_time
+name: Timo2Home
+origin: device_tracker.life360_timo_de_wit
+destination: zone.home
+region: 'EU'

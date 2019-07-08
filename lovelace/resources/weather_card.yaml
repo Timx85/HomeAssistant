@@ -1,0 +1,7 @@
+---
+# Lovelace animated weather card
+#
+# https://github.com/bramkragten/custom-ui/blob/master/weather-card
+#
+- url: /local/lovelace/weather-card.js
+  type: module

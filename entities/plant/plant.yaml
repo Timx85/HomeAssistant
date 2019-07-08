@@ -1,0 +1,31 @@
+# spathiphyllum_woonkamer:
+#   sensors:
+#     moisture: sensor.spathiphyllum_woonkamer_moisture
+#     battery: sensor.spathiphyllum_woonkamer_battery
+#     conductivity: sensor.spathiphyllum_woonkamer_conductivity
+#     brightness: sensor.spathiphyllum_woonkamer_light_intensity
+#   min_moisture: 15
+#   max_moisture: 100
+#   min_battery: 15
+
+# calathea_hal:
+#   sensors:
+#     moisture: sensor.calathea_hal_moisture
+#     battery: sensor.calathea_hal_battery
+#     conductivity: sensor.calathea_hal_conductivity
+#     brightness: sensor.calathea_hal_light_intensity
+#   min_moisture: 15
+#   max_moisture: 100
+#   min_battery: 15
+  
+# Spathiphyllum_Kast:
+#   sensors:
+#     moisture: sensor.spathiphyllum_kast_moisture
+#     battery: sensor.spathiphyllum_kast_battery
+#     conductivity: sensor.spathiphyllum_kast_conductivity
+#     brightness: sensor.spathiphyllum_kast_light_intensity
+#   min_moisture: 15
+#   max_moisture: 100
+#   min_battery: 15
+
+

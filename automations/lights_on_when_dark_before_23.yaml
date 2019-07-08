@@ -3,7 +3,7 @@
   initial_state: 'on'
   trigger:
   - platform: numeric_state 
-    entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
     below: 25
   condition:
     - condition: time
@@ -35,7 +35,7 @@
   initial_state: 'on'
   trigger:
   - platform: numeric_state 
-    entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
     above: 25
   condition:
     - condition: time

@@ -1,0 +1,10 @@
+# This activates the person component in home assistant
+# executed by Home Assistant when turned on.
+#
+#
+#
+# https://www.home-assistant.io/components/person/
+#
+#
+#
+person:

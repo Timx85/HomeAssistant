@@ -1,0 +1,16 @@
+platform: rest
+resource: https://raw.githubusercontent.com/Timx85/HomeAssistant/master/resources/gad-calendar.json
+name: trash_dayaftertomorrow
+scan_interval: 3600
+value_template: >
+  {% set now = as_timestamp(now()) %}
+  {% set TwoDay = 172800 %}
+  {% set nextDay = now + TwoDay %}
+  {% set DayAftertomorrow = nextDay | timestamp_custom("%d/%m/%Y") %}
+  {% set containerType = value_json.days[ DayAftertomorrow ] %}
+  {% if containerType | trim != "" %}
+    {% set trash = value_json.legend[ containerType ] %}
+    {{ trash }}
+  {% else %}
+    Geen
+  {% endif %}

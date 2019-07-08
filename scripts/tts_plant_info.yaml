@@ -1,0 +1,21 @@
+tts_plant_info:
+  alias: Announce Plant Info
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: "{{ sonos_entity|default('media_player.keuken_2') }}"
+    - service: tts.google_say
+      data_template:
+        entity_id: "{{ sonos_entity|default('media_player.keuken_2') }}"
+        message: >
+          {% if is_state_attr('sensor.plant_problems','water_number',0) %}
+          No plants need watering.
+          {% elif states.sensor.plant_problems.attributes.water_number | float > 0 %}
+          {{states.sensor.plant_problems.attributes.water}} need to be watered.
+          {% endif %}
+    - delay: "{{ delay|default('00:00:00') }}"
+    - wait_template: "{{ is_state(sonos_entity|default('media_player.keuken_2'), 'playing') }}"
+      timeout: '00:00:05'
+    - service: sonos.restore
+      data_template:
+        entity_id: "{{ sonos_entity|default('media_player.keuken_2') }}"

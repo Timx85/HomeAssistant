@@ -1,0 +1,9 @@
+platform: template
+sensors:
+  presence_timo_time:
+    value_template: >
+      {% if is_state('person.timo', 'home') %}
+        -
+      {% else %}
+        {{ states('sensor.timo2home') + ' MIN' }}
+      {% endif %}

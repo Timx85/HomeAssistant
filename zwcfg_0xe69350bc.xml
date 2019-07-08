@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Driver xmlns="http://code.google.com/p/open-zwave/" version="3" home_id="0xe69350bc" node_id="1" api_capabilities="0" controller_capabilities="40" poll_interval="60000" poll_interval_between="true">
+<Driver xmlns="http://code.google.com/p/open-zwave/" version="3" home_id="0xe69350bc" node_id="1" api_capabilities="0" controller_capabilities="8" poll_interval="60000" poll_interval_between="true">
 	<Node id="1" name="" location="" basic="2" generic="2" specific="1" type="Static PC Controller" listening="true" frequentListening="false" beaming="true" routing="false" max_baud_rate="40000" version="4" query_stage="Complete">
-		<Manufacturer id="86" name="Aeotec">
+		<Manufacturer id="86" name="AEON Labs">
 			<Product type="1" id="5a" name="ZW090 Z-Stick Gen5 EU" />
 		</Manufacturer>
 		<CommandClasses>
@@ -255,7 +255,7 @@
 				<Value type="byte" genre="user" instance="1" index="6" label="Step Size" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
 				<Value type="button" genre="user" instance="1" index="7" label="Inc" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="button" genre="user" instance="1" index="8" label="Dec" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
-				<Value type="byte" genre="user" instance="2" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="99" />
+				<Value type="byte" genre="user" instance="2" index="0" label="Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
 				<Value type="button" genre="user" instance="2" index="1" label="Bright" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="button" genre="user" instance="2" index="2" label="Dim" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 				<Value type="bool" genre="system" instance="2" index="3" label="Ignore Start Level" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
@@ -283,7 +283,7 @@
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="3" request_flags="3" innif="true">
 				<Instance index="1" endpoint="1" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="158.35" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="268.68" />
 				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
@@ -309,28 +309,28 @@
 			</CommandClass>
 			<CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION" version="1" request_flags="5" innif="true">
 				<Instance index="1" />
-				<Value type="byte" genre="config" instance="1" index="1" label="Minimum brightness level" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="98" value="12">
+				<Value type="byte" genre="config" instance="1" index="1" label="Minimum brightness level" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="98" value="1">
 					<Help>Parameter is set automatically during the calibration process. Options for changing parameter 1-98. Default 1.</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="2" label="Maximum brightness level" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="2" max="99" value="79">
+				<Value type="byte" genre="config" instance="1" index="2" label="Maximum brightness level" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="2" max="99" value="99">
 					<Help>Parameter is set automatically during the calibration process. Options for changing parameter 2-99. Default 99.</Help>
 				</Value>
 				<Value type="byte" genre="config" instance="1" index="3" label="Incandescence level of dimmable compact fluorescent lamps" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="99" value="1">
 					<Help>Virtual value set as a percentage level between parameters MIN (1%) and MAX. (99%). The Dimmer will set to this value after first switch on. It is required for warming up and switching dimmable compact fluorescent lamps and certain types of light sources. Options for changing parameter 1-99. Default 1.</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="4" label="Incandescence time of dimmable compact fluorescent lamps" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+				<Value type="short" genre="config" instance="1" index="4" label="Incandescence time of dimmable compact fluorescent lamps" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
 					<Help>This parameter determines the time required for switching compact fluorescent lamps and certain types of light sources. Setting this parameter to 0 will disable the incandescence functionality. Available settings: 0-255 (0s - 25,5s)</Help>
 				</Value>
 				<Value type="byte" genre="config" instance="1" index="5" label="The percentage of a dimming step at automatic control" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="99" value="1">
 					<Help>Available settings: 1-99 Default: 1</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="6" label="Time of a dimming step at automatic control" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1">
+				<Value type="short" genre="config" instance="1" index="6" label="Time of a dimming step at automatic control" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1">
 					<Help>Available settings: 0-255 (0s - 2,55s) Default setting: 1</Help>
 				</Value>
 				<Value type="byte" genre="config" instance="1" index="7" label="The percentage of a dimming step at manual control" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="99" value="1">
 					<Help>Available settings: 1-99 Default: 1</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="8" label="Time of a dimming step at manual control" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="5">
+				<Value type="short" genre="config" instance="1" index="8" label="Time of a dimming step at manual control" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="5">
 					<Help>Available settings: 0-255 (0s - 2,55s) Default setting: 1</Help>
 				</Value>
 				<Value type="list" genre="config" instance="1" index="9" label="Saving state before power failure" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
@@ -354,7 +354,7 @@
 					<Item label="Start auto-calibration of the load without Fibaro Bypass" value="1" />
 					<Item label="Start auto-calibration of the load with Fibaro Bypass" value="2" />
 				</Value>
-				<Value type="list" genre="config" instance="1" index="14" label="Auto-calibration status" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+				<Value type="list" genre="config" instance="1" index="14" label="Auto-calibration status" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
 					<Help>This parameter determines operating mode of the Dimmer (automatic/manual settings).</Help>
 					<Item label="calibration procedure not performed or Dimmer operates on manual settings" value="0" />
 					<Item label="Dimmer operates on auto-calibration settings" value="1" />
@@ -362,7 +362,7 @@
 				<Value type="byte" genre="config" instance="1" index="15" label="Burnt out bulb detection" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="99" value="30">
 					<Help>Function based on the sudden power variation of a specific value, interpreted as a LOAD ERROR. Available settings: 0 - function disabled; 1-99 - percentage value of power variation, compared to standard power consumption, measured during the calibration procedure (to be interpreted as load error/burnt out bulb) Default setting: 30</Help>
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="16" label="Time delay of a burnt out bulb" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="5">
+				<Value type="short" genre="config" instance="1" index="16" label="Time delay of a burnt out bulb" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="5">
 					<Help>Time of delay (in seconds) for power variation detection, interpreted as a LOAD ERROR or OVERLOAD detection (too much power connected to the Dimmer). Available settings: 0 - detection of a burnt out bulb disabled; 1-255 - delay time in seconds; Default setting: 5</Help>
 				</Value>
 				<Value type="byte" genre="config" instance="1" index="19" label="Forced switch on brightness level" units="%" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="99" value="0">
@@ -417,7 +417,7 @@
 					<Item label="forced trailing edge control" value="1" />
 					<Item label="control mode selected automatically (based on auto-calibration)" value="2" />
 				</Value>
-				<Value type="list" genre="config" instance="1" index="31" label="Load control mode" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
+				<Value type="list" genre="config" instance="1" index="31" label="Load control mode" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
 					<Help>Load control mode recognized during auto-calibration.</Help>
 					<Item label="leading edge" value="0" />
 					<Item label="trailing edge" value="1" />
@@ -450,7 +450,7 @@
 				<Value type="list" genre="config" instance="1" index="37" label="Behaviour of the Dimmer after OVERCURRENT or SURGE" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
 					<Help>Behaviour of the Dimmer after OVERCURRENT or SURGE</Help>
 					<Item label="device permanently disabled until re-enabling by comand or external switch" value="0" />
-					<Item label="three atempts to turn on the load" value="1" />
+					<Item label="three attempts to turn on the load" value="1" />
 				</Value>
 				<Value type="short" genre="config" instance="1" index="38" label="Brightness level correction for flickering loads" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="255">
 					<Help>Correction reduces spontaneous flickering of some capacitive load (e.g. dimmable lEDs) at certain brightness levels in 2-wire installation. In countries using ripple-control, correction may cause changes in brightness. In this case it is necessary to disable correction or adjust time of correction for flickering loads. Available settings: 0 - automatic correction disabled 1-254 - duration of correction in seconds 255 - automatic correction always enabled Default setting: 255</Help>
@@ -486,7 +486,7 @@
 					<Item label="ALARM DIMMER OFF - device will turn OFF upon receipt of alarm frame" value="2" />
 					<Item label="ALARM FLASHING - device will turn ON and OFF periodically" value="3" />
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="44" label="Time of alarm state" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="32767" value="88">
+				<Value type="short" genre="config" instance="1" index="44" label="Time of alarm state" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="1" max="32767" value="600">
 					<Help>Alarm state may be cancelled earlier, as a result of pressing the switches or sending the Z-Wave command frame.</Help>
 				</Value>
 				<Value type="list" genre="config" instance="1" index="45" label="OVERLOAD alarm report" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="1" size="1">
@@ -520,8 +520,8 @@
 				<Value type="short" genre="config" instance="1" index="52" label="Periodic active power and energy reports" units="sec" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="32767" value="3600">
 					<Help>Parameter 52 defines a time period between consecutive reports. Timer is reset and counted from zero after each report. Available settings: 0 - periodic reports disabled; 1-32767 (1-32767 seconds); Default setting: 3600 (3600s)</Help>
 				</Value>
-				<Value type="short" genre="config" instance="1" index="53" label="Approximated power at the maximum brightness level" units="Watt" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="500" value="0">
-					<Help>This parameter determines the approximate value of the power that will be reported by the device at its maximum brightness level. This parameter works only when parameter 58 has a value other than 0. Available settings: 0-500 (0-500W) - power consumed by the load at the maximum brightness level. Default setting: 0</Help>
+				<Value type="short" genre="config" instance="1" index="53" label="Energy reports" units="kWh" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
+					<Help>Energy level change which will result in sending a new energy report. Available settings: 0 - energy reports disabled; 1-255 (0,01 - 2,55 kWh) - report triggering threshold; Default setting: 10 (0,1 kWh)</Help>
 				</Value>
 				<Value type="list" genre="config" instance="1" index="54" label="Self-measurement" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
 					<Help>The Dimmer may include active power and energy consumed by itself in reports sent to the main controller.</Help>
@@ -534,8 +534,8 @@
 					<Item label="approximation based on the calibration data" value="1" />
 					<Item label="approximation based on the control angle" value="2" />
 				</Value>
-				<Value type="byte" genre="config" instance="1" index="59" label="Energy reports" units="kWh" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="10">
-					<Help>Energy level change which will result in sending a new energy report. Available settings: 0 - energy reports disabled; 1-255 (0,01 - 2,55 kWh) - report triggering threshold; Default setting: 10 (0,1 kWh)</Help>
+				<Value type="short" genre="config" instance="1" index="59" label="Approximated power at the maximum brightness level" units="Watt" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="500" value="0">
+					<Help>This parameter determines the approximate value of the power that will be reported by the device at its maximum brightness level. This parameter works only when parameter 58 has a value other than 0. Available settings: 0-500 (0-500W) - power consumed by the load at the maximum brightness level. Default setting: 0</Help>
 				</Value>
 			</CommandClass>
 			<CommandClass id="113" name="COMMAND_CLASS_ALARM" version="5" request_flags="1" innif="true">
@@ -657,9 +657,12 @@
 			</CommandClass>
 			<CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="8" innif="true">
 				<Instance index="1" />
-				<Value type="decimal" genre="user" instance="1" index="1" label="Temperature" units="C" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="22.2" />
+				<Value type="decimal" genre="user" instance="1" index="1" label="Temperature" units="C" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="23.2" />
 				<Value type="decimal" genre="user" instance="1" index="3" label="Luminance" units="lux" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0" />
 				<Value type="decimal" genre="user" instance="1" index="25" label="Seismic Intensity" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+				<Value type="decimal" genre="user" instance="1" index="52" label="Acceleration X-axis" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+				<Value type="decimal" genre="user" instance="1" index="53" label="Acceleration Y-axis" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+				<Value type="decimal" genre="user" instance="1" index="54" label="Acceleration Z-axis" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
 			</CommandClass>
 			<CommandClass id="86" name="COMMAND_CLASS_CRC_16_ENCAP" version="1" request_flags="4" innif="true">
 				<Instance index="1" />
@@ -675,7 +678,7 @@
 			</CommandClass>
 			<CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION" version="1" request_flags="4" innif="true">
 				<Instance index="1" />
-				<Value type="byte" genre="config" instance="1" index="1" label="Motion detection - sensitivity" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="50">
+				<Value type="byte" genre="config" instance="1" index="1" label="Motion detection - sensitivity" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="15">
 					<Help>The lower the value, the more sensitive the PIR sensor is. Available settings: 8 - 255 Default setting: 15</Help>
 				</Value>
 				<Value type="byte" genre="config" instance="1" index="2" label="Motion detection - blind time" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="15" value="3">
@@ -933,7 +936,7 @@
 			</CommandClass>
 			<CommandClass id="37" name="COMMAND_CLASS_SWITCH_BINARY" version="1" request_flags="4" innif="true">
 				<Instance index="1" />
-				<Value type="bool" genre="user" instance="1" index="0" label="Switch" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="True" />
+				<Value type="bool" genre="user" instance="1" index="0" label="Switch" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 			</CommandClass>
 			<CommandClass id="39" name="COMMAND_CLASS_SWITCH_ALL" version="1" request_flags="4" innif="true">
 				<Instance index="1" />
@@ -946,12 +949,8 @@
 			</CommandClass>
 			<CommandClass id="50" name="COMMAND_CLASS_METER" version="2" request_flags="2" innif="true">
 				<Instance index="1" />
-				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="18.56" />
-				<Value type="decimal" genre="user" instance="1" index="1" label="Previous Reading" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0" />
-				<Value type="int" genre="user" instance="1" index="2" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="4096" />
+				<Value type="decimal" genre="user" instance="1" index="0" label="Energy" units="kWh" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="59.93" />
 				<Value type="decimal" genre="user" instance="1" index="8" label="Power" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0" />
-				<Value type="decimal" genre="user" instance="1" index="9" label="Previous Reading" units="W" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="1024" />
-				<Value type="int" genre="user" instance="1" index="10" label="Interval" units="seconds" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="-2147483648" max="2147483647" value="4" />
 				<Value type="bool" genre="user" instance="1" index="32" label="Exporting" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="False" />
 				<Value type="button" genre="system" instance="1" index="33" label="Reset" units="" read_only="false" write_only="true" verify_changes="false" poll_intensity="0" min="0" max="0" />
 			</CommandClass>
@@ -969,8 +968,8 @@
 			</CommandClass>
 			<CommandClass id="113" name="COMMAND_CLASS_ALARM" version="1" request_flags="2" innif="true">
 				<Instance index="1" />
-				<Value type="byte" genre="user" instance="1" index="0" label="Alarm Type" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="2" />
-				<Value type="byte" genre="user" instance="1" index="1" label="Alarm Level" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1" />
+				<Value type="byte" genre="user" instance="1" index="0" label="Alarm Type" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+				<Value type="byte" genre="user" instance="1" index="1" label="Alarm Level" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
 			</CommandClass>
 			<CommandClass id="114" name="COMMAND_CLASS_MANUFACTURER_SPECIFIC" version="1" request_flags="4" innif="true">
 				<Instance index="1" />
@@ -992,7 +991,7 @@
 			</CommandClass>
 		</CommandClasses>
 	</Node>
-	<Node id="10" name="" location="" basic="4" generic="16" specific="1" roletype="5" devicetype="1792" nodetype="0" type="Binary Power Switch" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
+	<Node id="10" name="spareSwitch" location="" basic="4" generic="16" specific="1" roletype="5" devicetype="1792" nodetype="0" type="Binary Power Switch" listening="true" frequentListening="false" beaming="true" routing="true" max_baud_rate="40000" version="4" query_stage="Complete">
 		<Manufacturer id="60" name="Everspring">
 			<Product type="4" id="7" name="AN180 Plug-in ON/OFF Module" />
 		</Manufacturer>

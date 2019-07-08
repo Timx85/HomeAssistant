@@ -1,0 +1,7 @@
+beneden:
+  name: beneden
+  entities:
+  - light.fibaro_system_fgd212_dimmer_2_level_2
+  - switch.everspring_an180_plug_in_on_off_module_switch
+  - switch.everspring_an180_plug_in_on_off_module_switch_2
+  - switch.everspring_an180_plug_in_on_off_module_switch_3

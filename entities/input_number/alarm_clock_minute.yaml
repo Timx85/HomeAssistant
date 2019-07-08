@@ -1,0 +1,6 @@
+alarm_clock_minute:
+  mode: slider
+  initial: 0
+  min: 0
+  max: 59
+  step: 5

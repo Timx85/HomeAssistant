@@ -1,0 +1,4 @@
+platform: template
+sensors:
+  presence_timo_battery:
+    value_template: '{{ states.device_tracker.life360_timo_de_wit.attributes.battery|default(0) }}'

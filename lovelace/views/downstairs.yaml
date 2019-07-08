@@ -1,0 +1,239 @@
+title: Settings
+icon: mdi:settings-outline
+#theme: happy
+cards:
+  - type: entities
+    entities:
+      - sensor.zwave_battery_living_room_motion_sensor
+      - automation.update_plant_problems
+      - script.run_plant_info
+      - input_boolean.timohome
+      - input_boolean.daniellehome
+      - group.family
+      - light.domitech_smart_led_retrofit_kit_ze27eu_level
+      - person.timo
+      - person.danielle
+      - script.foscam_on
+      - sensor.foscammotiondetectionstatus
+      - sensor.foscammotionsensor
+      - sensor.water_plants_friendly
+      - switch.foscam_motion
+      - device_tracker.life360_timo_de_wit
+  - type: custom:tracker-card
+
+  - type: light
+    entity: light.domitech_smart_led_retrofit_kit_ze27eu_level
+    name: Hal
+
+  # - type: picture-elements
+  #   image: /local/logo/plant_woonkamer.jpg
+  #   elements:            
+  #       - type: state-icon
+  #         entity: sensor.spathiphyllum_woonkamer_conductivity              
+  #         style:
+  #           top: 70%
+  #           left: 90%
+  #           color: rgb(255, 255, 255)
+  #           --iron-icon-height: 30px
+  #           --iron-icon-width: 30px
+  #           --paper-item-icon-color: white
+  #       - type: state-label
+  #         entity: sensor.spathiphyllum_woonkamer_conductivity
+  #         attribute: state.state
+  #         style:
+  #           top: 78%
+  #           left: 82%
+  #           width: 8%
+  #           color: rgb(249, 251, 255)
+  #           font-family: Trebuchet MS
+  #           text-rendering: optimizeLegibility
+  #           text-shadow: 2px 2px DarkSlateGrey
+  #           font-size: 110%
+  #           pointer-events: none
+  #           transform: none
+        
+  #       - type: state-icon
+  #         entity: sensor.spathiphyllum_woonkamer_moisture
+  #         icon: mdi:water-percent
+  #         style:
+  #           top: 70%
+  #           left: 65%
+  #           color: rgb(255, 255, 255)
+  #           --iron-icon-height: 30px
+  #           --iron-icon-width: 30px
+  #           --paper-item-icon-color: white
+  #       - type: state-label
+  #         entity: sensor.spathiphyllum_woonkamer_moisture
+  #         attribute: state.state
+  #         style:
+  #           top: 78%
+  #           left: 58%
+  #           width: 10%
+  #           color: rgb(249, 251, 255)
+  #           font-family: Trebuchet MS
+  #           text-rendering: optimizeLegibility
+  #           text-shadow: 2px 2px DarkSlateGrey
+  #           font-size: 110%
+  #           pointer-events: none
+  #           transform: none
+        
+  #       - type: state-icon
+  #         entity: sensor.spathiphyllum_woonkamer_light_intensity
+  #         #icon: mdi:water-percent
+  #         style:
+  #           top: 70%
+  #           left: 77%
+  #           color: rgb(255, 255, 255)
+  #           --iron-icon-height: 30px
+  #           --iron-icon-width: 30px
+  #           --paper-item-icon-color: white
+  #       - type: state-label
+  #         entity: sensor.spathiphyllum_woonkamer_light_intensity
+  #         attribute: state.state
+  #         style:
+  #           top: 78%
+  #           left: 68%
+  #           width: 8%
+  #           color: rgb(249, 251, 255)
+  #           font-family: Trebuchet MS
+  #           text-rendering: optimizeLegibility
+  #           text-shadow: 2px 2px DarkSlateGrey
+  #           font-size: 110%
+  #           pointer-events: none
+  #           transform: none
+        
+  #       - type: state-icon
+  #         entity: sensor.spathiphyllum_woonkamer_battery
+  #         #icon: mdi:water-percent
+  #         style:
+  #           top: 70%
+  #           left: 6%
+  #           color: rgb(255, 255, 255)
+  #           --iron-icon-height: 30px
+  #           --iron-icon-width: 30px
+  #           --paper-item-icon-color: white
+  #       - type: state-label
+  #         entity: sensor.spathiphyllum_woonkamer_battery
+  #         attribute: state.state
+  #         style:
+  #           top: 78%
+  #           left: 1%
+  #           width: 5%
+  #           color: rgb(249, 251, 255)
+  #           font-family: Trebuchet MS
+  #           text-rendering: optimizeLegibility
+  #           text-shadow: 2px 2px DarkSlateGrey
+  #           font-size: 110%
+  #           pointer-events: none
+  #           transform: none
+  
+  # - type: entity-button
+  #   entity: script.run_plant_info
+  #   tap_action:
+  #     action: call-service
+  #     service: script.turn_on
+  #     service_data:
+  #       entity_id: script.run_plant_info
+  #   icon: mdi:tree
+
+  # - type: picture-elements
+    image: /local/logo/plant_woonkamer.jpg
+    elements:            
+        - type: state-icon
+          entity: sensor.calathea_hal_conductivity              
+          style:
+            top: 70%
+            left: 90%
+            color: rgb(255, 255, 255)
+            --iron-icon-height: 30px
+            --iron-icon-width: 30px
+            --paper-item-icon-color: white
+        - type: state-label
+          entity: sensor.calathea_hal_conductivity
+          attribute: state.state
+          style:
+            top: 78%
+            left: 82%
+            width: 8%
+            color: rgb(249, 251, 255)
+            font-family: Trebuchet MS
+            text-rendering: optimizeLegibility
+            text-shadow: 2px 2px DarkSlateGrey
+            font-size: 110%
+            pointer-events: none
+            transform: none
+        
+        - type: state-icon
+          entity: sensor.calathea_hal_moisture
+          icon: mdi:water-percent
+          style:
+            top: 70%
+            left: 65%
+            color: rgb(255, 255, 255)
+            --iron-icon-height: 30px
+            --iron-icon-width: 30px
+            --paper-item-icon-color: white
+        - type: state-label
+          entity: sensor.calathea_hal_moisture
+          attribute: state.state
+          style:
+            top: 78%
+            left: 58%
+            width: 10%
+            color: rgb(249, 251, 255)
+            font-family: Trebuchet MS
+            text-rendering: optimizeLegibility
+            text-shadow: 2px 2px DarkSlateGrey
+            font-size: 110%
+            pointer-events: none
+            transform: none
+        
+        - type: state-icon
+          entity: sensor.calathea_hal_light_intensity
+          #icon: mdi:water-percent
+          style:
+            top: 70%
+            left: 77%
+            color: rgb(255, 255, 255)
+            --iron-icon-height: 30px
+            --iron-icon-width: 30px
+            --paper-item-icon-color: white
+        - type: state-label
+          entity: sensor.calathea_hal_light_intensity
+          attribute: state.state
+          style:
+            top: 78%
+            left: 68%
+            width: 8%
+            color: rgb(249, 251, 255)
+            font-family: Trebuchet MS
+            text-rendering: optimizeLegibility
+            text-shadow: 2px 2px DarkSlateGrey
+            font-size: 110%
+            pointer-events: none
+            transform: none
+        
+        - type: state-icon
+          entity: sensor.calathea_hal_battery
+          #icon: mdi:water-percent
+          style:
+            top: 70%
+            left: 6%
+            color: rgb(255, 255, 255)
+            --iron-icon-height: 30px
+            --iron-icon-width: 30px
+            --paper-item-icon-color: white
+        - type: state-label
+          entity: sensor.calathea_hal_battery
+          attribute: state.state
+          style:
+            top: 78%
+            left: 1%
+            width: 5%
+            color: rgb(249, 251, 255)
+            font-family: Trebuchet MS
+            text-rendering: optimizeLegibility
+            text-shadow: 2px 2px DarkSlateGrey
+            font-size: 110%
+            pointer-events: none
+            transform: none
