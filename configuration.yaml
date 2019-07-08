@@ -15,32 +15,3 @@ homeassistant:
 
   # Load packages
   packages: !include_dir_named integrations
-
-
-# # Configure a default setup of Home Assistant (frontend, api, etc)
-# default_config:
-#   packages: !include_dir_named integrations
-# # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# # http:
-# #   base_url: example.duckdns.org:8123
-
-# # Text to speech
-# # tts:
-# #   - platform: google_translate
-
-# # group: !include groups.yaml
-# # automation: !include automations.yaml
-# # script: !include scripts.yaml
-
-# discovery:
-
-# # Allows you to issue voice commands from the frontend in enabled browsers
-# conversation:
-
-# # zwave:
-# #   usb_path: /dev/ttyACM0
-
-# # map:
-# #   - device_tracker.life360_timo_de_wit
-# #   - device_tracker.life360_danielle_werk
-# #   - device_tracker.life360_danielle
