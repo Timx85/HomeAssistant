@@ -7,19 +7,21 @@ id: home
 theme: dark-mode
 # The cards to show on this view.
 cards:
+  - type: custom:simple-weather-card
+    style: |
+      ha-card {
+        border-radius: 12px;
+        background: rgba(11, 11, 11, 0.6);
+      }
+    entity: weather.dark_sky
+    name: "Blaricum"
+    backdrop: false
+
   - type: vertical-stack
     cards:
       - type: picture-elements
         image: /local/logo/blank_zwart.png
         elements:
-        - type: custom:text-element
-          text: "Aanwezigheid"
-          style:
-            top: 15%
-            left: 50%
-            color: rgb(255, 255, 255)
-            font-weight: bold
-
         - type: image
           entity: person.timo
           #tap_action: more_info
@@ -106,277 +108,296 @@ cards:
             color: rgb(249, 251, 255)
             font-size: 100%
 
-  - id: 4bd3e5a495384db3bb7fd40df2184663  # Automatically created id
-    type: picture-elements
-    image: /local/logo/HuisVoorkantMenuV1.jpg
-    elements:
-      - type: state-label
-        entity: sensor.time
-        style:
-          top: 8%
-          left: 10%
-          font-size: 150%
-          color: rgb(249, 251, 255)
-          text-shadow: 2px 2px DarkSlateGrey
-          font-family: Trebuchet MS
-          font-weight: bold
-          pointer-events: none
-          text-rendering: optimizeLegibility
-          -moz-osx-font-smoothing: grayscale
-          font-smoothing: antialiased
-          -webkit-font-smoothing: antialiased
-      - type: custom:state-attribute-element
-        entity: weather.dark_sky
-        attribute: temperature
-        suffix: " C"
-        style:
-          top: 8%
-          left: 90%
-          font-size: 150%
-          font-weight: bold
-          color: rgb(249, 251, 255)
-          font-family: Trebuchet MS
-          text-shadow: 2px 2px DarkSlateGrey
-          text-rendering: optimizeLegibility
-          -moz-osx-font-smoothing: grayscale
-          font-smoothing: antialiased
-          -webkit-font-smoothing: antialiased
-      - type: state-label
-        entity: sensor.time_of_day
-        style:
-          top: 45%
-          left: 22%
-          color: rgb(249, 251, 255)
-          font-size: 150%
-          pointer-events: none
-          text-shadow: 2px 2px DarkSlateGrey
-          font-family: Trebuchet MS
-          font-style: oblique
-          font-weight: 350
-          text-rendering: optimizeLegibility
-          -moz-osx-font-smoothing: grayscale
-          font-smoothing: antialiased
-          -webkit-font-smoothing: antialiased
-      - type: state-icon
-        entity: sensor.trash_today
-        style:
-          top: 90%
-          left: 5%
-          #color: white
-      - type: state-label
-        entity: sensor.trash_today
-        attribute: state.state
-        style:
-          top: 91%
-          left: 1%
-          width: 10%
-          color: rgb(249, 251, 255)
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          font-size: 50%
-          pointer-events: none
-          transform: none
-      - type: state-icon
-        entity: sensor.trash_tomorrow
-        style:
-          top: 90%
-          left: 14%
-          #color: white
-      - type: state-label
-        entity: sensor.trash_tomorrow
-        attribute: state.state
-        style:
-          top: 91%
-          left: 10%
-          width: 10%
-          color: rgb(249, 251, 255)
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          font-size: 50%
-          pointer-events: none
-          transform: none
-      - type: state-icon
-        entity: sensor.trash_dayaftertomorrow
-        style:
-          top: 90%
-          left: 22%
-          color: green
-          # max-width: 4px
-          # max-height: 4px
-      - type: state-label
-        entity: sensor.trash_dayaftertomorrow
-        attribute: state.state
-        style:
-          top: 91%
-          left: 18%
-          width: 10%
-          color: rgb(249, 251, 255)
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          font-size: 50%
-          pointer-events: none
-          transform: none
-      - type: state-icon
-        entity: input_boolean.statuswasmachine
-        icon: mdi:washing-machine
-        style:
-          top: 90%
-          left: 32%
-          color: white
-          --iron-icon-height: 25px
-          --iron-icon-width: 25px
-      - type: state-icon
-        entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_temperature
-        icon: mdi:oil-temperature
-        style:
-          top: 90%
-          left: 82%
-          width: 10%
-          color: white
-          --iron-icon-height: 25px
-          --iron-icon-width: 25px
-      - type: state-label
-        entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_temperature
-        attribute: state.state
-        style:
-          top: 91%
-          left: 78%
-          color: rgb(249, 251, 255)
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          font-size: 50%
-          pointer-events: none
-          transform: none
-      
-      - type: state-icon
-        entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
-        icon: mdi:theme-light-dark
-        style:
-          top: 90%
-          left: 92%
-          width: 10%
-          color: white
-          --iron-icon-height: 25px
-          --iron-icon-width: 25px
-      - type: state-label
-        entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
-        attribute: state.state
-        style:
-          top: 91%
-          left: 88%
-          color: rgb(249, 251, 255)
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          font-size: 50%
-          pointer-events: none
-          transform: none
+      - id: 4bd3e5a495384db3bb7fd40df2184663  # Automatically created id
+        type: picture-elements
+        image: /local/logo/HuisVoorkantMenuV1.jpg
+        elements:
+          - type: state-label
+            entity: sensor.time
+            style:
+              top: 8%
+              left: 10%
+              font-size: 150%
+              color: rgb(249, 251, 255)
+              text-shadow: 2px 2px DarkSlateGrey
+              font-family: Trebuchet MS
+              font-weight: bold
+              pointer-events: none
+              text-rendering: optimizeLegibility
+              -moz-osx-font-smoothing: grayscale
+              font-smoothing: antialiased
+              -webkit-font-smoothing: antialiased
+          - type: custom:state-attribute-element
+            entity: weather.dark_sky
+            attribute: temperature
+            suffix: "C"
+            style:
+              top: 8%
+              left: 90%
+              font-size: 150%
+              font-weight: bold
+              color: rgb(249, 251, 255)
+              font-family: Trebuchet MS
+              text-shadow: 2px 2px DarkSlateGrey
+              text-rendering: optimizeLegibility
+              -moz-osx-font-smoothing: grayscale
+              font-smoothing: antialiased
+              -webkit-font-smoothing: antialiased
+          - type: state-label
+            entity: sensor.time_of_day
+            style:
+              top: 45%
+              left: 22%
+              color: rgb(249, 251, 255)
+              font-size: 150%
+              pointer-events: none
+              text-shadow: 2px 2px DarkSlateGrey
+              font-family: Trebuchet MS
+              font-style: oblique
+              font-weight: 350
+              text-rendering: optimizeLegibility
+              -moz-osx-font-smoothing: grayscale
+              font-smoothing: antialiased
+              -webkit-font-smoothing: antialiased
+          - type: state-icon
+            entity: sensor.trash_today
+            style:
+              top: 90%
+              left: 5%
+              #color: white
+          - type: state-label
+            entity: sensor.trash_today
+            attribute: state.state
+            style:
+              top: 91%
+              left: 1%
+              width: 10%
+              color: rgb(249, 251, 255)
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              font-size: 50%
+              pointer-events: none
+              transform: none
+          - type: state-icon
+            entity: sensor.trash_tomorrow
+            style:
+              top: 90%
+              left: 14%
+              #color: white
+          - type: state-label
+            entity: sensor.trash_tomorrow
+            attribute: state.state
+            style:
+              top: 91%
+              left: 10%
+              width: 10%
+              color: rgb(249, 251, 255)
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              font-size: 50%
+              pointer-events: none
+              transform: none
+          - type: state-icon
+            entity: sensor.trash_dayaftertomorrow
+            style:
+              top: 90%
+              left: 22%
+              color: green
+              # max-width: 4px
+              # max-height: 4px
+          - type: state-label
+            entity: sensor.trash_dayaftertomorrow
+            attribute: state.state
+            style:
+              top: 91%
+              left: 18%
+              width: 10%
+              color: rgb(249, 251, 255)
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              font-size: 50%
+              pointer-events: none
+              transform: none
+          - type: state-icon
+            entity: input_boolean.statuswasmachine
+            icon: mdi:washing-machine
+            style:
+              top: 90%
+              left: 32%
+              color: white
+              --iron-icon-height: 25px
+              --iron-icon-width: 25px
+          - type: state-icon
+            entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_temperature
+            icon: mdi:oil-temperature
+            style:
+              top: 90%
+              left: 82%
+              width: 10%
+              color: white
+              --iron-icon-height: 25px
+              --iron-icon-width: 25px
+          - type: state-label
+            entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_temperature
+            attribute: state.state
+            style:
+              top: 91%
+              left: 78%
+              color: rgb(249, 251, 255)
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              font-size: 50%
+              pointer-events: none
+              transform: none
+          
+          - type: state-icon
+            entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
+            icon: mdi:theme-light-dark
+            style:
+              top: 90%
+              left: 92%
+              width: 10%
+              color: white
+              --iron-icon-height: 25px
+              --iron-icon-width: 25px
+          - type: state-label
+            entity: sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance
+            attribute: state.state
+            style:
+              top: 91%
+              left: 88%
+              color: rgb(249, 251, 255)
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              font-size: 50%
+              pointer-events: none
+              transform: none
 
-      - type: custom:text-element
-        text: "Upcomming Events:"
-        style:
-          top: 58%
-          left: 23.5%
-          width: 42%
-          #font-style: oblique
-          font-weight: 350
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          color: white
-          font-size: 110% 
-          text-decoration: underline
-        
-      - type: state-label
-        entity: sensor.greeter_card_info_time
-        style:
-          top: 68%
-          left: 12%
-          width: 22%
-          align-items: left
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          color: white
-          font-size: 90%  
+          - type: custom:text-element
+            text: "Upcomming Events:"
+            style:
+              top: 58%
+              left: 23.5%
+              width: 42%
+              #font-style: oblique
+              font-weight: 350
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              color: white
+              font-size: 110% 
+              text-decoration: underline
+            
+          - type: state-label
+            entity: sensor.greeter_card_info_time
+            style:
+              top: 68%
+              left: 12%
+              width: 22%
+              align-items: left
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              color: white
+              font-size: 90%  
 
-      - type: state-label
-        entity: sensor.greeter_card_info_date
-        style:
-          top: 78%
-          left: 12%
-          width: 22%
-          align-items: left
-          font-family: Trebuchet MS
-          text-rendering: optimizeLegibility
-          text-shadow: 2px 2px DarkSlateGrey
-          color: white
-          font-size: 90%             
+          - type: state-label
+            entity: sensor.greeter_card_info_date
+            style:
+              top: 78%
+              left: 12%
+              width: 22%
+              align-items: left
+              font-family: Trebuchet MS
+              text-rendering: optimizeLegibility
+              text-shadow: 2px 2px DarkSlateGrey
+              color: white
+              font-size: 90%             
 
-  - type: vertical-stack
-    cards:
       - type: horizontal-stack
         cards:
-          - type: light
-            entity: light.fibaro_system_fgd212_dimmer_2_level_2
-            name: Eettafel lamp
-          - type: vertical-stack
-            cards:
-              - type: custom:button-card
-                color_type: blank-card
-              - id: 41622664efb245fea2d33c34c7d2f920  # Automatically created id
-                type: custom:button-card
-                entity: switch.everspring_an180_plug_in_on_off_module_switch_2
-                name: Woonkamer Staanlamp
-                size: 5%
-                icon: mdi:lightbulb-on-outline
-                color_type: card
-                color: rgb(255, 222, 5)
-                color_off: rgb(194, 245, 245)
-              - type: custom:button-card
-                entity: switch.everspring_an180_plug_in_on_off_module_switch_3
-                name: Woonkamer Lamp Kast
-                size: 5%
-                icon: mdi:lightbulb-on-outline
-                color_type: card
-                color: rgb(255, 222, 5)
-                color_off: rgb(194, 245, 245)
-              - type: custom:button-card
-                entity: light.domitech_smart_led_retrofit_kit_ze27eu_level
-                name: Hal
-                size: 5%
-                icon: mdi:lightbulb-on-outline
-                color_type: card
-                color: rgb(255, 222, 5)
-                color_off: rgb(194, 245, 245)
-              - type: custom:button-card
-                color_type: blank-card
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - name: Sta lamp
+              - icon: floor-lamp
+              - show_state: true
+              - show_label: false
+              - tap_action: toggle
+              - entity: switch.everspring_an180_plug_in_on_off_module_switch_2
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - name: Kast Lamp
+              - icon: lamp
+              - show_state: true
+              - show_label: false
+              - tap_action: toggle
+              - entity: switch.everspring_an180_plug_in_on_off_module_switch_3
+          - type: custom:decluttering-card
+            template: light_button_card
+            variables:
+              - name: Hal
+              - icon: ceiling-light
+              - show_state: true
+              - show_label: false
+              - tap_action: toggle
+              - entity: light.domitech_smart_led_retrofit_kit_ze27eu_level
+          - type: custom:decluttering-card
+            template: light_button_card_2
+            variables:
+              - name: Keuken Lamp
+              - icon: ceiling-light
+              - show_state: true
+              - show_label: true
+              #- show_last_changed: true
+              - tap_action: toggle
+              - hold_action: more-info
+              - entity: light.fibaro_system_fgd212_dimmer_2_level_2
+              - margin-right: 40px
+              - opacity: 0.7
 
+      - type: custom:decluttering-card
+        template: group_bar_card
+        variables:
+          - name: Alle lampen beneden
+          - icon: lightbulb-on
+          - icon_off: lightbulb-off-outline
+          - show_state: true
+          - show_label: false
+          - show_last_changed: true
+          - tap_action: toggle
+          - entity: group.beneden
+          - margin-right: 10px
+          - opacity: 0.7
+          - aspect_ratio: 7/1
 
-      - type: custom:button-card
-        entity: group.beneden
-        size: 3%
-        icon: mdi:lightbulb-on-outline
-        name: Alle lampen beneden
-        color_type: card
-        color: rgb(255, 222, 5)
-        color_off: rgb(194, 245, 245)
-      
-      - type: custom:button-card
-        entity: switch.everspring_an180_plug_in_on_off_module_switch
-        size: 3%
-        icon: mdi:lightbulb-on-outline
-        name: Kerstverlichting
-        color_type: card
-        color: rgb(255, 222, 5)
-        color_off: rgb(194, 245, 245)
+  - type: custom:mini-media-player
+    entity: media_player.keuken_2
+    icon: mdi:spotify
+    artwork: cover
+    hide:
+      volume: true
+      source: true
+      power_state: false
+    speaker_group:
+      platform: sonos
+      show_group_count: true
+      entities:
+        - entity_id: media_player.keuken_2
+          name: Sonos Keuken
+        - entity_id: media_player.woonkamer
+          name: Sonos Woonkamer
 
   - id: 1cdd03a2c88642e283384680c63bb5bd  # Automatically created id
     type: custom:calendar-card
+    progressBar: true
+    showLocation: true
     entities:
       - calendar.danielletimodewitgmailcom
       - calendar.contacts

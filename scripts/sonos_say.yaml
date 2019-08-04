@@ -11,10 +11,12 @@ sonos_say:
       data_template:
         entity_id: "{{ sonos_entity|default('media_player.keuken_2') }}"
         volume_level: "{{ volume|default(0.5) }}"
-    - service: tts.google_say
+    - delay: 00:00:01
+    - service: tts.google_translate_say
       data_template:
         entity_id: "{{ sonos_entity|default('media_player.keuken_2') }}"
         message: "{{ message }}"
+    - delay: 00:00:01
     - delay: "{{ delay|default('00:00:00') }}"
     - wait_template: "{{ is_state(sonos_entity|default('media_player.keuken_2'), 'playing') }}"
       timeout: '00:00:05'

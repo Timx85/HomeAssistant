@@ -6,7 +6,7 @@
     state: 'off'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.everspring_an158_plugin_meter_appliance_module_power #ENERGY METER
+      entity_id: sensor.everspring_an158_plug_in_meter_appliance_module_power #ENERGY METER
       above: '0.0'
       for:
         minutes: 1      
@@ -22,7 +22,7 @@
     state: 'on'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.everspring_an158_plugin_meter_appliance_module_power #ENERGY METER
+      entity_id: sensor.everspring_an158_plug_in_meter_appliance_module_power #ENERGY METER
       below: '0.1'
       for:
         minutes: 1      
@@ -38,7 +38,7 @@
     - delay: '00:00:10'
     - service: script.sonos_say
       data:
-        sonos_entity: media_player.keuken
-        volume: 0.2
-        delay: '00:00:04'
+        sonos_entity: media_player.keuken_2
+        volume: 0.4
+        delay: '00:00:02'
         message: 'Wasmachine is klaar Danielle!'

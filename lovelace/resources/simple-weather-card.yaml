@@ -1,0 +1,3 @@
+---
+- url: /local/community/simple-weather-card/simple-weather-card.js
+  type: module

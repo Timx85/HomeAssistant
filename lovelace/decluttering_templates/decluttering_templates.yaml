@@ -1,0 +1,393 @@
+light_button_card:
+  default:
+    - size: 30%
+    - lock: false
+    - color: auto
+    - spin: false
+    - show_state: true
+    - show_label: true
+    - show_last_changed: false
+    - tap_action: toggle
+    - hold_action: more-info
+    - aspect_ratio: 1/1
+  card:
+    type: custom:button-card
+    name: '[[name]]'
+    icon: 'mdi:[[icon]]'
+    size: '[[size]]'
+    color: '[[color]]'
+    lock: '[[lock]]'
+    aspect_ratio: '[[aspect_ratio]]'
+    entity: '[[entity]]'
+    label_template: >
+      var bri = Math.round(entity.attributes.brightness / 2.55);
+      return (bri ? bri : '0') + '%';
+    show_state: '[[show_state]]'
+    show_label: '[[show_label]]'
+    show_last_changed: '[[show_last_changed]]'
+    tap_action:
+      action: '[[tap_action]]'
+      haptic: light
+    hold_action:
+      action: '[[hold_action]]'
+      haptic: success
+    styles:
+      card:
+        - border-radius: 12px
+        - --paper-card-background-color: var(--homekit-white)
+      label:
+        - color: gray
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 10px
+        - justify-self: start
+      state:
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 10px
+        - justify-self: start
+        - text-transform: capitalize
+        - font-weight: bold
+        - padding-left: 10px
+      grid:
+        - grid-template-areas: '"i" "n" "s" "l"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+      img_cell:
+        - align-self: start
+        - text-align: start
+        - margin-right: 60px
+      name:
+        - justify-self: start
+        - padding-left: 10px
+        - font-weight: bold
+        - font-family: Helvetica 
+        - font-size: 13px
+    state:
+      - value: "on" 
+        spin: '[[spin]]'  
+        styles:
+          name:
+            - color: black
+          state:
+            - color: green
+          lock:
+            - color: black
+      - value: "off"
+        styles:
+          card:
+            - opacity: 0.4
+          icon:
+            - color: gray
+          name:
+            - color: gray
+          state:
+            - color: red
+          lock:
+            - color: black
+      - value: "unavailable"
+        styles:
+          card:
+            - opacity: 0.2
+          icon:
+            - color: gray
+          state:
+            - color: gray
+          name:
+            - color: gray
+
+# Standard Button Card (Used throughout most of my setup)
+switch_button_card:
+  default:
+    - size: 25%
+    - lock: false
+    - color: auto
+    - background_color: var(--homekit-white)
+    - variable: spin
+    - spin: false
+    - show_name: true
+    - show_state: true
+    - show_label: true
+    - show_icon: true
+    - show_last_changed: false
+    - tap_action: toggle
+    - hold_action: more-info
+    - aspect_ratio: 1/1
+    - margin-right: 60px
+    - label: '&nbsp;'
+    - opacity: 0.4
+    - off_icon_color: gray
+    - off_name_color: gray
+    - off_state_color: gray
+  card:
+    type: custom:button-card
+    name: '[[name]]'
+    icon: 'mdi:[[icon]]'
+    size: '[[size]]'
+    color: '[[color]]'
+    lock: '[[lock]]'
+    aspect_ratio: '[[aspect_ratio]]'
+    entity: '[[entity]]'
+    label: '[[label]]'
+    show_name: '[[show_name]]'
+    show_icon: '[[show_icon]]'
+    show_state: '[[show_state]]'
+    show_label: '[[show_label]]'
+    show_last_changed: '[[show_last_changed]]'
+    tap_action: '[[tap_action]]'
+    hold_action: '[[hold_action]]'
+    styles:
+      card:
+        - border-radius: 12px
+        - --paper-card-background-color: rgba(11, 11, 11, 0.6)
+      label:
+        - color: gray
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 10px
+        - justify-self: start
+      state:
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 10px
+        - justify-self: start
+        - text-transform: capitalize
+        - font-weight: bold
+        - padding-left: 10px
+        - color: gray
+      grid:
+        - grid-template-areas: '"i" "n" "s" "l"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+      img_cell:
+        - align-self: start
+        - text-align: start
+        - margin-right: '[[margin-right]]'
+      name:
+        - justify-self: start
+        - padding-left: 10px
+        - font-weight: bold
+        - font-family: Helvetica 
+        - font-size: 13px
+    state:
+      - value: "on" 
+        '[[variable]]': '[[spin]]'  
+        styles:
+          name:
+            - color: black
+          state:
+            - color: gray
+          lock:
+            - color: black
+      - value: "off"
+        styles:
+          card:
+            - opacity: '[[opacity]]'
+          icon:
+            - color: '[[off_icon_color]]'
+          name:
+            - color: '[[off_name_color]]'
+          state:
+            - color: '[[off_state_color]]'
+          lock:
+            - color: black
+
+light_button_card_2:
+  default:
+    - size: 30%
+    - lock: false
+    - color: auto
+    - spin: false
+    - show_state: true
+    - show_label: true
+    - show_last_changed: false
+    - tap_action: toggle
+    - hold_action: more-info
+    - aspect_ratio: 1/1
+  card:
+    type: custom:button-card
+    name: '[[name]]'
+    icon: 'mdi:[[icon]]'
+    size: '[[size]]'
+    color: '[[color]]'
+    lock: '[[lock]]'
+    aspect_ratio: '[[aspect_ratio]]'
+    entity: '[[entity]]'
+    label_template: >
+      var bri = Math.round(entity.attributes.brightness / 2.55);
+      return (bri ? bri : '0') + '%';
+    show_state: '[[show_state]]'
+    show_label: '[[show_label]]'
+    show_last_changed: '[[show_last_changed]]'
+    tap_action:
+      action: '[[tap_action]]'
+      haptic: light
+    hold_action:
+      action: '[[hold_action]]'
+      haptic: success
+    styles:
+      card:
+        - border-radius: 12px
+        - --paper-card-background-color: var(--homekit-white)
+      label:
+        - color: gray
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 10px
+        - justify-self: start
+      state:
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 10px
+        - justify-self: start
+        - text-transform: capitalize
+        - font-weight: bold
+        - padding-left: 10px
+      grid:
+        - grid-template-areas: '"i" "n" "s" "l"'
+        - grid-template-columns: 1fr
+        - grid-template-rows: 1fr min-content min-content
+      img_cell:
+        - align-self: start
+        - text-align: start
+        - margin-right: 60px
+      name:
+        - justify-self: start
+        - padding-left: 10px
+        - font-weight: bold
+        - font-family: Helvetica 
+        - font-size: 13px
+    state:
+      - value: "on" 
+        spin: '[[spin]]'  
+        styles:
+          name:
+            - color: black
+          state:
+            #- color: gray
+            - color: green
+          lock:
+            - color: black
+      - value: "off"
+        styles:
+          card:
+            - opacity: 0.4
+          icon:
+            - color: gray
+          name:
+            - color: gray
+          state:
+            - color: red
+          lock:
+            - color: black
+      - value: "unavailable"
+        styles:
+          card:
+            - opacity: 0.2
+          icon:
+            - color: gray
+          state:
+            - color: gray
+          name:
+            - color: gray
+
+group_bar_card:
+  default:
+    - size: 20%
+    - lock: false
+    - color: auto
+    - spin: false
+    - show_state: true
+    - show_label: true
+    - show_last_changed: false
+    - tap_action: toggle
+    - hold_action: more-info
+    - aspect_ratio: 1/1
+  card:
+    type: custom:button-card
+    name: '[[name]]'
+    icon: 'mdi:[[icon]]'
+    icon_off: 'mdi:[[icon_off]]'
+    size: '[[size]]'
+    color: '[[color]]'
+    lock: '[[lock]]'
+    aspect_ratio: '[[aspect_ratio]]'
+    entity: '[[entity]]'
+    show_state: '[[show_state]]'
+    show_label: '[[show_label]]'
+    show_last_changed: '[[show_last_changed]]'
+    layout: icon_label
+    tap_action:
+      action: '[[tap_action]]'
+      haptic: light
+    hold_action:
+      action: '[[hold_action]]'
+      haptic: success
+    styles:
+      card:
+        - border-radius: 12px
+        - --paper-card-background-color: var(--homekit-white)
+        - box-shadow: 0px 0px 5px 1px var(--paper-item-icon-active-color
+      icon:
+        - color: var(--paper-item-icon-active-color)
+        - height: 30px
+        - width: 30px
+        - justify-self: center
+      label:
+        - color: gray
+        - font-size: 11px
+        - font-family: Helvetica
+        - padding: 0px 11px
+        - justify-self: start
+      state:
+        - font-size: 11px
+        - font-family: Helvetica
+        - justify-self: start
+        - text-transform: capitalize
+        - font-weight: bold
+      grid:
+        - grid-template-areas: '"i n s l "'
+        #- grid-template-rows: 50px auto auto
+        - grid-template-columns: 150px 150px 50px
+      img_cell:
+        - justify-self: center
+        - align-self: center
+        - text-align: center
+      name:
+        - justify-self: center
+        - font-weight: bold
+        - font-family: Helvetica 
+        - font-size: 13px
+    state:
+      - value: "on" 
+        spin: '[[spin]]'  
+        styles:
+          name:
+            - color: black
+          state:
+            - color: green
+          lock:
+            - color: black
+      - value: "off"
+        icon: '[[icon_off]]'
+        styles:
+          card:
+            - opacity: 0.4
+          icon:
+            - color: gray
+          name:
+            - color: gray
+          state:
+            - color: red
+          lock:
+            - color: black
+      - value: "unavailable"
+        styles:
+          card:
+            - opacity: 0.2
+          icon:
+            - color: gray
+          state:
+            - color: gray
+          name:
+            - color: gray

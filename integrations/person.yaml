@@ -8,3 +8,5 @@
 #
 #
 person:
+  - name: dummy
+    id: dummy

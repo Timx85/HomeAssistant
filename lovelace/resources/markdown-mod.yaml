@@ -1,0 +1,3 @@
+---
+- url: /local/community/lovelace-markdown-mod/markdown-mod.js
+  type: module

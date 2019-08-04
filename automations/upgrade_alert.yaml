@@ -2,23 +2,24 @@
 # This alerts me on my phone when a new release
 # of Home Assistant for Hass.io is released.
 #
-alias: system_upgrade_alert
-trigger:
-  platform: state
-  entity_id: sensor.version_available
-condition:
-  - condition: template
-    value_template: >-
-      {{
-        states('sensor.version_available')
-        !=
-        states('sensor.version_current')
-      }}
-action:
-  - service: telegram_bot.send_message
-    data_template:
-      title: Upgrade time!
-      target: !secret telegram_Timo_id
-      message: >-
-        There is a Home Assistant upgrade for Hass.io pending!
-        Version {{ states('sensor.version_available') }} just got released!
+- alias: system_upgrade_alert
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: sensor.version_available
+  condition:
+    - condition: template
+      value_template: >-
+        {{
+          states('sensor.version_available')
+          !=
+          states('sensor.version_current')
+        }}
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        title: Upgrade time!
+        target: !secret telegram_Timo_id
+        message: >-
+          There is a Home Assistant upgrade for Hass.io pending!
+          Version {{ states('sensor.version_available') }} just got released!

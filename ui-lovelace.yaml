@@ -9,7 +9,12 @@
 #
 title: Home Control Panel
 resources: !include_dir_merge_list lovelace/resources/
+
+# Decluttering Templates
+decluttering_templates: !include lovelace/decluttering_templates/decluttering_templates.yaml
+
 views:
   - !include lovelace/views/dashboard.yaml
   - !include lovelace/views/downstairs.yaml
   - !include lovelace/views/security.yaml
+  - !include lovelace/views/lights.yaml

@@ -22,6 +22,6 @@
   condition: []
   action:
   - data:
-      message: "Batterij {{ states.device_tracker.ce0417142b50872202_2.attributes.battery_level|default(0) }} \n
-      {{ states('device_tracker.ce0417142b50872202_2') }}"
+      message: "Batterij {{ states.device_tracker.life360_timo_de_wit.attributes.battery|default(0) }} \n
+      {{ states('device_tracker.life360_timo_de_wit') }}"
     service: telegram_bot.send_message

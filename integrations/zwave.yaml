@@ -29,9 +29,13 @@ zwave:
       ignored: true
       polling_intensity: 0
 
-    "*sensor_acceleration*":
+    "*_system":
       ignored: true
       polling_intensity: 0  
+    
+    "*sensor_acceleration*":
+      ignored: true
+      polling_intensity: 0 
 
     # Not sure why this is useful... I don't use it; ignore.
     "*_sourcenodeid*":

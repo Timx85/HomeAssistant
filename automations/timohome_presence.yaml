@@ -49,17 +49,17 @@
     - delay: 00:01:00
     - service: script.sonos_say
       data:
-        sonos_entity: media_player.keuken
+        sonos_entity: media_player.keuken_2
         volume: 0.2
-        delay: '00:00:04'
+        delay: '00:00:02'
         message: 'Welkom thuis Timo!'
 
 - alias: 'HallwayonWhenTimoHome'
   initial_state: 'on'
   trigger:
-    - platform: state
-      entity_id: person.timo
-      to: 'home'
+    platform: state
+    entity_id: person.timo
+    to: 'home'
     # - platform: state
     #   entity_id: device_tracker.ce0417142b50872202 #GPSLOGGER
     #   to: 'home'
@@ -101,7 +101,7 @@
   trigger:
   - platform: zone
     event: enter
-    zone: zone.Home
+    zone: zone.home
     entity_id: person.timo
     # Optional
     #from: 'away'
@@ -110,7 +110,6 @@
   action:
     - service: telegram_bot.send_message
       data_template:
-        #title: 'Presence detection'
         target: !secret telegram_Timo_id
         message: 'Timo is Home'
         disable_notification: false 
